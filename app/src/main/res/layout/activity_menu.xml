@@ -13,7 +13,6 @@
         android:layout_height="wrap_content"
         android:text="HOLA MUNDO PANTALLA DE MENU"
         android:textSize="50sp"
-
         />
 
 </LinearLayout>
