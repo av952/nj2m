@@ -42,12 +42,21 @@ public class Menu extends AppCompatActivity implements View.OnClickListener{
 
         case R.id.btn_facil:
             boton=1;
+            btnfacil.setAlpha(1);
+            btnmedio.setAlpha(0.5f);
+            btndificil.setAlpha(0.5f);
             break;
         case R.id.btn_difiil:
             boton=3;
+            btndificil.setAlpha(1);
+            btnfacil.setAlpha(0.5f);
+            btnmedio.setAlpha(0.5f);
             break;
         case R.id.btn_medio:
             boton=2;
+            btnmedio.setAlpha(1);
+            btnfacil.setAlpha(0.5f);
+            btndificil.setAlpha(0.5f);
             break;
         case R.id.btn_jugar:
             if(boton==1){
