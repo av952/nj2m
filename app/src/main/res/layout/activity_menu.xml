@@ -76,6 +76,7 @@
         android:textSize="30sp"
         android:layout_marginTop="40dp"
         android:id="@+id/btn_jugar"
+        android:visibility="invisible"
         />
 
 </LinearLayout>

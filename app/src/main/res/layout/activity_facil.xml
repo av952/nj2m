@@ -13,7 +13,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="0"
-        android:textSize="80dp"
+        android:textSize="30dp"
         android:id="@+id/puntaje"
         />
 
@@ -22,46 +22,52 @@
         android:layout_height="wrap_content"
         android:layout_weight="1"
         />
-<LinearLayout
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:weightSum="4"
-    >
-    <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/imgv_per1"
-        android:src="@drawable/per1"
-        android:layout_gravity="center"
-        android:layout_marginLeft="20dp"
-        android:layout_weight="1"
-        />
-    <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/imgv_item"
-        android:src="@drawable/item1"
-        android:layout_weight="1"
-        />
-    <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/imgv_per2"
-        android:src="@drawable/per1"
-        android:layout_gravity="center"
-        android:layout_marginLeft="50dp"
-        android:layout_weight="1"
-        />
-    <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/imgv_item2"
-        android:src="@drawable/item1"
-        android:layout_weight="1"
-        android:layout_marginRight="20dp"
-        />
 
-</LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:weightSum="4"
+        >
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/imgv_per1"
+            android:src="@drawable/per1"
+            android:layout_gravity="center"
+            android:layout_marginLeft="20dp"
+            android:layout_weight="1"
+            />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/imgv_item"
+            android:src="@drawable/item1"
+            android:layout_weight="1"
+            />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/imgv_per2"
+            android:src="@drawable/per1"
+            android:layout_gravity="center"
+            android:layout_marginLeft="50dp"
+            android:layout_weight="1"
+            />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/imgv_item2"
+            android:src="@drawable/item1"
+            android:layout_weight="1"
+            android:layout_marginRight="20dp"
+            />
+
+    </LinearLayout>
+
 
 
     <Space

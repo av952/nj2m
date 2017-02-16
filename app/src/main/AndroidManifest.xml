@@ -18,7 +18,9 @@
         <activity android:name=".Menu" />
         <activity android:name=".Nivel_facil" />
         <activity android:name=".Nivel_medio" />
-        <activity android:name=".Nivel_dificil"></activity>
+        <activity android:name=".Nivel_dificil" />
+        <activity android:name=".Prueba" />
+        <activity android:name=".Practiceudacity"></activity>
     </application>
 
 </manifest>

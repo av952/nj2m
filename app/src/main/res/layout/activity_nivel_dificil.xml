@@ -8,10 +8,40 @@
     tools:context="memo.game.avxc.memorizapp.Nivel_dificil">
 
     <TextView
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:text="DIFICIL"
+    android:textSize="20dp"
+    android:id="@+id/texto"
+    />
+    <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="DIFICIL"
-        android:textSize="80dp"
+        android:textSize="20dp"
+        android:id="@+id/texto2"
         />
+
+
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/itemprueba"
+            android:src="@drawable/per1"
+            />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/personajeprueba"
+            />
+    </FrameLayout>
+
+
 
 </LinearLayout>

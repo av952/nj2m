@@ -5,6 +5,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.view.WindowManager;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.Switch;
 import android.widget.Toast;
@@ -14,6 +16,8 @@ public class Menu extends AppCompatActivity implements View.OnClickListener{
     private Button btnjugar,btnfacil,btndificil,btnmedio;
     //ENTERO PARA SABER QUE BOTON FUE  ORPIMIDO
     int boton;
+
+    Animation animation;
 
 
     @Override
@@ -33,6 +37,10 @@ public class Menu extends AppCompatActivity implements View.OnClickListener{
         btndificil.setOnClickListener(this);
         btnmedio.setOnClickListener(this);
         btnfacil.setOnClickListener(this);
+
+
+        animation = AnimationUtils.loadAnimation(getApplicationContext(),R.anim.pruebaanima);
+
     }
 
     @Override
@@ -41,18 +49,28 @@ public class Menu extends AppCompatActivity implements View.OnClickListener{
     switch (v.getId()){
 
         case R.id.btn_facil:
+            btnjugar.startAnimation(animation);
+            btnjugar.setText("jugar facil");
+            btnjugar.setVisibility(View.VISIBLE);
+
             boton=1;
             btnfacil.setAlpha(1);
             btnmedio.setAlpha(0.5f);
             btndificil.setAlpha(0.5f);
             break;
         case R.id.btn_difiil:
+            btnjugar.startAnimation(animation);
+            btnjugar.setText("jugar dificil");
+            btnjugar.setVisibility(View.VISIBLE);
             boton=3;
             btndificil.setAlpha(1);
             btnfacil.setAlpha(0.5f);
             btnmedio.setAlpha(0.5f);
             break;
         case R.id.btn_medio:
+            btnjugar.startAnimation(animation);
+            btnjugar.setText("jugar medio");
+            btnjugar.setVisibility(View.VISIBLE);
             boton=2;
             btnmedio.setAlpha(1);
             btnfacil.setAlpha(0.5f);
@@ -64,7 +82,7 @@ public class Menu extends AppCompatActivity implements View.OnClickListener{
                 startActivity(intent);
                 //finish();
             }else if(boton==2){
-                Intent intent = new Intent(this,Nivel_medio.class);
+                Intent intent = new Intent(this,Prueba.class);
                 startActivity(intent);
                 //finish();
             }else if(boton==3){
