@@ -3,6 +3,7 @@ package memo.game.avxc.memorizapp;
 import android.content.ClipData;
 import android.content.ClipDescription;
 import android.content.Intent;
+import android.os.CountDownTimer;
 import android.os.Handler;
 import android.support.v4.view.MotionEventCompat;
 import android.support.v7.app.AppCompatActivity;
@@ -25,7 +26,7 @@ import static android.R.attr.x;
 import static android.view.View.Y;
 
 public class Nivel_facil extends AppCompatActivity implements View.OnDragListener,View.OnLongClickListener,
-        View.OnClickListener,View.OnTouchListener{
+        View.OnClickListener,View.OnTouchListener, Comunicador{
 
     private ImageView imgper1,imgper2,imgitem1,imgitem2,imglibro1,imglibro2,imglibro3;
     //intanciando alamacen para obtener libros random
@@ -42,6 +43,9 @@ public class Nivel_facil extends AppCompatActivity implements View.OnDragListene
 
     //score
     private int score=0;
+
+    //countdown
+    CountDownTimer countDownTimer2;
 
 
     //ANIMACION
@@ -113,6 +117,10 @@ public class Nivel_facil extends AppCompatActivity implements View.OnDragListene
         cronometro = (TextView)findViewById(R.id.tiempo);
         cronometro_2= new Cronometro_2(cronometro);
         //imgitem2.startAnimation(animation);
+
+
+        //inicia new thread
+
     }
 
     public void libroaleatorio(){
@@ -173,7 +181,9 @@ public class Nivel_facil extends AppCompatActivity implements View.OnDragListene
             @Override
             public void run() {
                 cronometro_2.cuentaatras();
+                cambio();
                 libroaleatorio();
+
 
             }
         },5000);
@@ -185,14 +195,10 @@ public class Nivel_facil extends AppCompatActivity implements View.OnDragListene
 
             case 1:
                 if(libroelegido==ir){
-                    cronometro_2.countDownTimer.cancel();
-                    cronometro_2.cuentaatras();
                     score= score+1;
-                    String string = String.valueOf(score);
-                    puntaje.setText(string);
+                    accionDeEvaluacion();
                     libroelegido=-1;
                     itemaleatorio(1,0);
-
 
                 }else {
                     score = score-1;
@@ -202,11 +208,10 @@ public class Nivel_facil extends AppCompatActivity implements View.OnDragListene
                 break;
             case 2:
                 if(libroelegido==ir2){
-                    cronometro_2.countDownTimer.cancel();
-                    cronometro_2.cuentaatras();
                     score= score+1;
-                    String string = String.valueOf(score);
-                    puntaje.setText(string);
+                    accionDeEvaluacion();
+                   // String string = String.valueOf(score);
+                   // puntaje.setText(string);
                     libroelegido=-1;
                     itemaleatorio(0,1);
 
@@ -218,6 +223,17 @@ public class Nivel_facil extends AppCompatActivity implements View.OnDragListene
                 }
         }
     }
+
+    //para reducir el codigo que estaba arriba
+    public void accionDeEvaluacion(){
+        cronometro_2.countDownTimer.cancel();
+        countDownTimer2.cancel();
+        cronometro_2.cuentaatras();
+        String string = String.valueOf(score);
+        puntaje.setText(string);
+
+    }
+
 
     @Override
     public boolean onDrag(View v, DragEvent event) {
@@ -342,4 +358,26 @@ public class Nivel_facil extends AppCompatActivity implements View.OnDragListene
         return false;
     }
 
+    public void cambiarostro(){
+
+    }
+
+
+    @Override
+    public void cambio() {
+
+        countDownTimer2= new CountDownTimer(5000,1000) {
+            @Override
+            public void onTick(long millisUntilFinished) {
+
+            }
+
+            @Override
+            public void onFinish() {
+                imgper1.setImageResource(R.drawable.per1_2);
+            }
+        }.start();
+
+
+    }
 }
