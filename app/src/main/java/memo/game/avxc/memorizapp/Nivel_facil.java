@@ -20,6 +20,7 @@ import android.widget.Toast;
 
 import java.util.Random;
 
+import static android.R.attr.breadCrumbShortTitle;
 import static android.R.attr.x;
 import static android.view.View.Y;
 
@@ -35,7 +36,7 @@ public class Nivel_facil extends AppCompatActivity implements View.OnDragListene
     private int l,L2,L3,r,r2,r3,ir,ir2,ir3,lr1,lr2,lr3;
     private int libroelegido,perelegido;
     //textvie
-    private TextView puntaje;
+    private TextView puntaje,cronometro;
     //handler
     private Handler handler;
 
@@ -50,6 +51,11 @@ public class Nivel_facil extends AppCompatActivity implements View.OnDragListene
     //futantes para ontouch
      float pinicialx,pinicialy; //posicion inicial xy de la imagen que se toca
     float dX,dY;
+
+
+    //cronometro2
+    public Cronometro_2 cronometro_2;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -75,15 +81,12 @@ public class Nivel_facil extends AppCompatActivity implements View.OnDragListene
 
         //ASIGNARLIBROS ONDRAG Y ONLONG
 
-        imglibro1.setOnClickListener(this);
+        imglibro1.setOnTouchListener(this);
         imglibro2.setOnTouchListener(this);
-        imglibro3.setOnLongClickListener(this);
+        imglibro3.setOnTouchListener(this);
 
         imgper1.setOnDragListener(this);
         imgper2.setOnDragListener(this);
-
-
-
 
         //textview puntaj
         puntaje = (TextView)findViewById(R.id.puntaje);
@@ -106,6 +109,9 @@ public class Nivel_facil extends AppCompatActivity implements View.OnDragListene
         itemaleatorio(1,1);
         asignacion();
 
+        //cronometro2
+        cronometro = (TextView)findViewById(R.id.tiempo);
+        cronometro_2= new Cronometro_2(cronometro);
         //imgitem2.startAnimation(animation);
     }
 
@@ -161,13 +167,14 @@ public class Nivel_facil extends AppCompatActivity implements View.OnDragListene
             imglibro2.setAnimation(animation);
             imglibro3.setImageResource(almacen.listaitem[lr3]);
             imglibro3.setAnimation(animation);
-
         }
 
         handler.postDelayed(new Runnable() {
             @Override
             public void run() {
+                cronometro_2.cuentaatras();
                 libroaleatorio();
+
             }
         },5000);
     }
@@ -178,11 +185,15 @@ public class Nivel_facil extends AppCompatActivity implements View.OnDragListene
 
             case 1:
                 if(libroelegido==ir){
+                    cronometro_2.countDownTimer.cancel();
+                    cronometro_2.cuentaatras();
                     score= score+1;
                     String string = String.valueOf(score);
                     puntaje.setText(string);
                     libroelegido=-1;
                     itemaleatorio(1,0);
+
+
                 }else {
                     score = score-1;
                     String string = String.valueOf(score);
@@ -191,11 +202,15 @@ public class Nivel_facil extends AppCompatActivity implements View.OnDragListene
                 break;
             case 2:
                 if(libroelegido==ir2){
+                    cronometro_2.countDownTimer.cancel();
+                    cronometro_2.cuentaatras();
                     score= score+1;
                     String string = String.valueOf(score);
                     puntaje.setText(string);
                     libroelegido=-1;
                     itemaleatorio(0,1);
+
+
                 }else {
                     score = score-1;
                     String string = String.valueOf(score);
@@ -212,18 +227,31 @@ public class Nivel_facil extends AppCompatActivity implements View.OnDragListene
 
             case DragEvent.ACTION_DRAG_ENTERED:
 
-                        if(view.getId()==R.id.imgv_libro1){
-                            puntaje.setText("lo lograste");
-                        }
                 return true;
 
              case DragEvent.ACTION_DROP:
-                 puntaje.setText("ACTION_DROP");
+
+                 int a= v.getId();
+               // puntaje.setText(""+a);
+
+                 switch (a){
+                     case R.id.imgv_per1:
+                         //puntaje.setText("personaje 1");
+                         perelegido =1;
+                         evaluacion();
+                         break;
+                     case R.id.imgv_per2:
+                         //puntaje.setText("personaje2");
+                         perelegido = 2;
+                         evaluacion();
+                 }
+
+
                  view.setVisibility(View.VISIBLE);
                  break;
 
              case DragEvent.ACTION_DRAG_EXITED:
-                 puntaje.setText("ACTION_DRAG_EXITED");
+                 //puntaje.setText("ACTION_DRAG_EXITED");
                  view.setVisibility(View.VISIBLE);
 
                  break;
@@ -272,7 +300,31 @@ public class Nivel_facil extends AppCompatActivity implements View.OnDragListene
         switch (event.getAction()) {
 
             case MotionEvent.ACTION_DOWN:
-                puntaje.setText("down");
+
+                //i me devuelve el valor del elemento selecionado
+                int i = v.getId();
+
+
+               // puntaje.setText("down"+i);
+
+                switch (i){
+                    case R.id.imgv_libro1:
+                        //puntaje.setText("libro 1");
+                        libroelegido =lr1;
+                        //evaluacion();
+                        break;
+                    case R.id.imgv_libro2:
+                        //puntaje.setText("libro 2");
+                        libroelegido =lr2;
+                        //evaluacion();
+                        break;
+                    case R.id.imgv_libro3:
+                       // puntaje.setText("libro 3");
+                        libroelegido=lr3;
+                        //evaluacion();
+                        break;
+
+                }
 
                 ClipData clipData = ClipData.newPlainText("","");
                 View.DragShadowBuilder shadowBuilder = new View.DragShadowBuilder(v);
@@ -290,8 +342,4 @@ public class Nivel_facil extends AppCompatActivity implements View.OnDragListene
         return false;
     }
 
-
-    public void ondrag(){
-
-    }
 }
