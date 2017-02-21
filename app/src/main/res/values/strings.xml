@@ -7,4 +7,7 @@
 
     <!-- MY STRINGS -->
     <string name="nombre_app">MEMORIZAPP</string>
+
+    <string name="groseria">!@##!$%!*#</string>
+    <string name="tomatetutiempo">Tomate tu tiempo para memorizar las imagenes, cuando estes listo da click acá.</string>
 </resources>

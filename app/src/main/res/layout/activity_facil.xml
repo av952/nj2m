@@ -10,113 +10,136 @@
 
 
     <TextView
+        android:id="@+id/puntaje"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="0"
-        android:textSize="30dp"
-        android:id="@+id/puntaje"
-        />
+        android:textSize="30dp" />
     <Space
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_weight="1"
-        />
+        android:layout_weight="6" />
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="tiempo"
-            android:textSize="30dp"
-            android:id="@+id/tiempo"
-            android:layout_marginLeft="40dp"
-            />
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="30dp"
+        android:text="@string/tomatetutiempo"
+        android:textAlignment="center"
+        android:id="@+id/txt_clikeable"
+        />
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:weightSum="4"
-        >
+        android:weightSum="4">
 
         <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
             android:id="@+id/imgv_per1"
-            android:src="@drawable/per1"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
             android:layout_gravity="center"
-            android:layout_marginLeft="20dp"
             android:layout_weight="1"
-            />
+            android:src="@drawable/per1" />
+
 
         <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
             android:id="@+id/imgv_item"
-            android:src="@drawable/item1"
-            android:layout_weight="1"
-            />
-
-        <ImageView
-            android:layout_width="wrap_content"
+            android:layout_width="40dp"
             android:layout_height="wrap_content"
-            android:id="@+id/imgv_per2"
-            android:src="@drawable/per1"
-            android:layout_gravity="center"
-            android:layout_marginLeft="50dp"
-            android:layout_weight="1"
-            />
+            android:layout_weight="0"
+            android:src="@drawable/item1" />
 
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/imgv_item2"
-            android:src="@drawable/item1"
-            android:layout_weight="1"
-            android:layout_marginRight="20dp"
-            />
+
+
+
 
     </LinearLayout>
+
+
+    <TextView
+        android:id="@+id/tiempo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/groseria"
+        android:textSize="20dp"
+        android:layout_marginLeft="20dp"
+        />
 
 
     <Space
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_weight="1"
-        />
+        android:layout_weight="4" />
+
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:weightSum="3"
-        android:layout_margin="10dp"
-        >
+        android:weightSum="3">
 
         <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@drawable/libro1"
-            android:layout_weight="1"
-            android:layout_marginRight="10dp"
             android:id="@+id/imgv_libro1"
-            />
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@drawable/libro2"
-            android:layout_weight="1"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
             android:layout_marginRight="10dp"
-            android:id="@+id/imgv_libro2"
-            />
+            android:layout_weight="1"
+            android:src="@drawable/libro1" />
 
         <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@drawable/libro3"
+            android:id="@+id/imgv_libro2"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
             android:layout_marginRight="10dp"
-            android:id="@+id/imgv_libro3"
             android:layout_weight="1"
+            android:src="@drawable/libro2" />
+
+        <ImageView
+            android:id="@+id/imgv_libro3"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_marginRight="10dp"
+            android:layout_weight="1"
+            android:src="@drawable/libro3"
 
             />
     </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:orientation="horizontal"
+        android:layout_weight="3"
+        android:weightSum="3">
+
+        <ImageView
+            android:id="@+id/imgv_libro4"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_marginRight="10dp"
+            android:layout_weight="1"
+            android:src="@drawable/libro1" />
+
+        <ImageView
+            android:id="@+id/imgv_libro5"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_marginRight="10dp"
+            android:layout_weight="1"
+            android:src="@drawable/libro2" />
+
+        <ImageView
+            android:id="@+id/imgv_libro6"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_marginRight="10dp"
+            android:layout_weight="1"
+            android:src="@drawable/libro3"
+
+            />
+    </LinearLayout>
+
 
 </LinearLayout>

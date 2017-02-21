@@ -82,7 +82,7 @@ public class Menu extends AppCompatActivity implements View.OnClickListener{
                 startActivity(intent);
                 //finish();
             }else if(boton==2){
-                Intent intent = new Intent(this,Prueba.class);
+                Intent intent = new Intent(this,Nivel_medio.class);
                 startActivity(intent);
                 //finish();
             }else if(boton==3){

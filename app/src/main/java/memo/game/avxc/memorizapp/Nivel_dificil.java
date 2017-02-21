@@ -54,6 +54,7 @@ public class Nivel_dificil extends AppCompatActivity {
         item.setX((personaje.getX()+dp/2));
         item.setY(100-(width2/height2));
 
+
         texto.setText("posicion del personaje en x"+personaje.getX()+ "dep= "+dp+" pivot x  personaje "+ personaje.getPivotX()+"posicion de el item en x"+item.getX());
         texto2.setText("Ancho "+width2+"altura"+height2);
 
