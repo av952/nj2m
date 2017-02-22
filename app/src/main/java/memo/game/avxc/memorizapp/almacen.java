@@ -68,7 +68,7 @@ public class Almacen {
             R.drawable.item47,
             R.drawable.item48,
             R.drawable.item49
- 
+
             /*R.drawable.item1,
             R.drawable.item2,
             R.drawable.item3,

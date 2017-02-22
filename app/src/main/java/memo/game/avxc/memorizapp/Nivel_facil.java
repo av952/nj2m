@@ -6,6 +6,7 @@ import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.DisplayMetrics;
+import android.util.Log;
 import android.view.DragEvent;
 import android.view.MotionEvent;
 import android.view.View;
@@ -156,14 +157,18 @@ public class Nivel_facil extends AppCompatActivity implements View.OnDragListene
         r2 = random.nextInt(almacen.listalibros.length);
         r3 = random.nextInt(almacen.listalibros.length);*/
 
+        Log.i("b","inicio libroaletorio");
+
 
         int i =0;
-        randomizalibro = new int[almacen.listaitem.length];
+        randomizalibro = new int[almacen.listalibros.length];
 
-        randomizalibro[i]= random.nextInt(almacen.listaitem.length);
+        randomizalibro[i]= random.nextInt(almacen.listalibros.length);
 
-        for(i=1;i<almacen.listaitem.length;i++){
-            randomizalibro[i]= random.nextInt(almacen.listaitem.length);
+        for(i=1;i<almacen.listalibros.length;i++){
+
+            Log.i("c","ingreso al for");
+            randomizalibro[i]= random.nextInt(almacen.listalibros.length);
             for(int j =0;j<i;j++){
                 if(randomizalibro[i]==randomizalibro[j]){
                     i--;
@@ -175,6 +180,8 @@ public class Nivel_facil extends AppCompatActivity implements View.OnDragListene
        /* if(r==r2||r==r3||r2==r||r2==r3||r3==r||r3==r2){
             libroaleatorio();
         }else{*/
+
+            Log.i("d","asignando libros");
             imglibro1.setImageResource(almacen.listalibros[randomizalibro[0]]);
             imglibro1.clearAnimation();
             imglibro2.setImageResource(almacen.listalibros[randomizalibro[1]]);
@@ -198,8 +205,9 @@ public class Nivel_facil extends AppCompatActivity implements View.OnDragListene
         determino cual item quiero actualizzar
          */
         if(op1==1){
-            ir = random.nextInt(almacen.listaitem.length);
-            imgitem1.setImageResource(almacen.listaitem[ir]);
+
+            ir = random.nextInt(6);
+            imgitem1.setImageResource(almacen.listaitem[randomiza[ir]]);
             imgitem1.startAnimation(animation);
         }
         /*if(op2==1){
@@ -218,6 +226,7 @@ public class Nivel_facil extends AppCompatActivity implements View.OnDragListene
     }
 
     //PARA ASIGNARLE UN TEMA A CADA LIBRO
+
     public void asignacion(){
 
         int i =0;
@@ -266,11 +275,13 @@ public class Nivel_facil extends AppCompatActivity implements View.OnDragListene
 
     public void retardador(){
 
+        Log.i("a","retardador");
+
         //vuelve invisible el texto
         txtclikeable.setVisibility(View.INVISIBLE);
 
         txtclikeable.setTextSize(0);
-        libroaleatorio();
+
 
 
         new Handler().postDelayed(new Runnable() {
@@ -293,7 +304,7 @@ public class Nivel_facil extends AppCompatActivity implements View.OnDragListene
         switch (perelegido){
 
             case 1:
-                if(libroelegido==ir){
+                if(libroelegido==randomiza[ir]){
                     score= score+1;
                     accionDeEvaluacion();
                     libroelegido=-1;
@@ -400,6 +411,7 @@ public class Nivel_facil extends AppCompatActivity implements View.OnDragListene
         switch (v.getId()){
             case R.id.txt_clikeable:
                 retardador();
+                libroaleatorio();
                 break;
 
 
@@ -520,4 +532,7 @@ public class Nivel_facil extends AppCompatActivity implements View.OnDragListene
 
         puntaje.setText("x "+x+"y "+y+"crono x"+cronometro.getX());
     }
+
+
+
 }
