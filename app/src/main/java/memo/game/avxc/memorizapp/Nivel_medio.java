@@ -1,11 +1,16 @@
 package memo.game.avxc.memorizapp;
 
 import android.content.ClipData;
+import android.content.Intent;
+import android.os.AsyncTask;
 import android.os.CountDownTimer;
 import android.os.Handler;
+import android.os.SystemClock;
+import android.support.annotation.MainThread;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.DisplayMetrics;
+import android.util.Log;
 import android.view.DragEvent;
 import android.view.MotionEvent;
 import android.view.View;
@@ -13,10 +18,12 @@ import android.view.WindowManager;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import java.util.Random;
 
+import static memo.game.avxc.memorizapp.R.id.progres1;
 import static memo.game.avxc.memorizapp.R.id.tiempo;
 
 public class Nivel_medio extends AppCompatActivity implements View.OnDragListener,View.OnLongClickListener,
@@ -39,6 +46,9 @@ public class Nivel_medio extends AppCompatActivity implements View.OnDragListene
 
     //score
     private int score=0;
+
+    //TEXTOCLIKEABLE
+    TextView  txtclikeable;
 
     //countdown
     CountDownTimer countDownTimer2;
@@ -68,12 +78,22 @@ public class Nivel_medio extends AppCompatActivity implements View.OnDragListene
 
     int[] randomiza;
     int[] randomizalibro;
+    int[] randomizaper;
+
+
+
+    //finjuego
+    Finjuego finjuego = new Finjuego();
+
+    //progresbar
+    public ProgressBar progressBar, progressBar2;
+    int progreso=100, progreso2=100;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_facil);
+        setContentView(R.layout.activity_nivel_medio);
         //FULLSCREEN
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
 
@@ -115,6 +135,10 @@ public class Nivel_medio extends AppCompatActivity implements View.OnDragListene
         //textview puntaj
         puntaje = (TextView)findViewById(R.id.puntaje);
 
+        //textview txtclikeable
+        //txtclikeable = (TextView)findViewById(R.id.txt_clikeable);
+        //txtclikeable.setOnClickListener(this);
+
         //VOLVIENDOLOS CLIEKEABLES
         /*imglibro1.setOnClickListener(this);
         imglibro2.setOnClickListener(this);
@@ -130,7 +154,7 @@ public class Nivel_medio extends AppCompatActivity implements View.OnDragListene
 
         //llamandometodo
 
-        itemaleatorio(1,1);
+        //itemaleatorio(1,1);
         asignacion();
 
         //cronometro2
@@ -141,6 +165,16 @@ public class Nivel_medio extends AppCompatActivity implements View.OnDragListene
 
         //inicia new thread
 
+
+        //progressbar
+        progressBar = (ProgressBar)findViewById(R.id.progres1);
+        progressBar.setVisibility(View.INVISIBLE);
+
+        progressBar2 = (ProgressBar)findViewById(R.id.progres2);
+        progressBar2.setVisibility(View.INVISIBLE);
+
+
+
     }
 
     public void libroaleatorio(){
@@ -148,14 +182,18 @@ public class Nivel_medio extends AppCompatActivity implements View.OnDragListene
         r2 = random.nextInt(almacen.listalibros.length);
         r3 = random.nextInt(almacen.listalibros.length);*/
 
+        Log.i("b","inicio libroaletorio");
+
 
         int i =0;
-        randomizalibro = new int[almacen.listaitem.length];
+        randomizalibro = new int[almacen.listalibros.length];
 
-        randomizalibro[i]= random.nextInt(almacen.listaitem.length);
+        randomizalibro[i]= random.nextInt(almacen.listalibros.length);
 
-        for(i=1;i<almacen.listaitem.length;i++){
-            randomizalibro[i]= random.nextInt(almacen.listaitem.length);
+        for(i=1;i<almacen.listalibros.length;i++){
+
+            Log.i("c","ingreso al for");
+            randomizalibro[i]= random.nextInt(almacen.listalibros.length);
             for(int j =0;j<i;j++){
                 if(randomizalibro[i]==randomizalibro[j]){
                     i--;
@@ -167,6 +205,8 @@ public class Nivel_medio extends AppCompatActivity implements View.OnDragListene
        /* if(r==r2||r==r3||r2==r||r2==r3||r3==r||r3==r2){
             libroaleatorio();
         }else{*/
+
+        Log.i("d","asignando libros");
         imglibro1.setImageResource(almacen.listalibros[randomizalibro[0]]);
         imglibro1.clearAnimation();
         imglibro2.setImageResource(almacen.listalibros[randomizalibro[1]]);
@@ -190,39 +230,55 @@ public class Nivel_medio extends AppCompatActivity implements View.OnDragListene
         determino cual item quiero actualizzar
          */
         if(op1==1){
-            ir = random.nextInt(almacen.listaitem.length);
-            imgitem1.setImageResource(almacen.listaitem[ir]);
+
+            ir = random.nextInt(6);
+            imgitem1.setImageResource(almacen.listaitem[randomiza[ir]]);
             imgitem1.startAnimation(animation);
         }
         if(op2==1){
-            ir2 = random.nextInt(almacen.listaitem.length);
-            imgitem2.setImageResource(almacen.listaitem[ir2]);
+            ir2 = random.nextInt(6);
+            imgitem2.setImageResource(almacen.listaitem[randomiza[ir2]]);
             imgitem2.startAnimation(animation);
 
         }
     }
 
+    public void personaje_aleatorio(int a,int b){
+
+        int i =0;
+        randomizaper = new int[almacen.listapersonajes.length];
+
+
+       randomizaper[i]= random.nextInt(almacen.listapersonajes.length);
+
+        for(i=1;i<almacen.listapersonajes.length;i++){
+
+            Log.i("c","ingreso al for del per");
+            randomizaper[i]= random.nextInt(almacen.listapersonajes.length);
+            for(int j =0;j<i;j++){
+                if(randomizaper[i]==randomizaper[j]){
+                    i--;
+                }
+            }
+        }
+
+
+        //int persojerandom = random.nextInt(almacen.listapersonajes.length);
+
+
+        if (a==1){
+            imgper1.setImageResource(almacen.listapersonajes[randomizaper[0]]);
+        }
+        if (b==1){
+            imgper2.setImageResource(almacen.listapersonajes[randomizaper[1]]);
+        }
+
+
+    }
+
     //PARA ASIGNARLE UN TEMA A CADA LIBRO
+
     public void asignacion(){
-
-        /*int[] a={
-
-        lr1=random.nextInt(almacen.listaitem.length),
-        lr2=random.nextInt(almacen.listaitem.length),
-        lr3=random.nextInt(almacen.listaitem.length),
-        lr4=random.nextInt(almacen.listaitem.length),
-        lr5=random.nextInt(almacen.listaitem.length),
-        lr6=random.nextInt(almacen.listaitem.length),
-
-        };
-
-        lr1=random.nextInt(almacen.listaitem.length);
-        lr2=random.nextInt(almacen.listaitem.length);
-        lr3=random.nextInt(almacen.listaitem.length);
-        lr4=random.nextInt(almacen.listaitem.length);
-        lr5=random.nextInt(almacen.listaitem.length);
-        lr6=random.nextInt(almacen.listaitem.length);*/
-
 
         int i =0;
         randomiza = new int[almacen.listaitem.length];
@@ -238,7 +294,6 @@ public class Nivel_medio extends AppCompatActivity implements View.OnDragListene
             }
         }
 
-
         imglibro1.setImageResource(almacen.listaitem[randomiza[0]]);
         imglibro1.setAnimation(animation2);
         imglibro2.setImageResource(almacen.listaitem[randomiza[1]]);
@@ -251,27 +306,56 @@ public class Nivel_medio extends AppCompatActivity implements View.OnDragListene
         imglibro5.setAnimation(animation2);
         imglibro6.setImageResource(almacen.listaitem[randomiza[5]]);
         imglibro6.setAnimation(animation2);
-        imglibro1.setMaxWidth(10);
-        imglibro1.setMaxHeight(10);
 
+        imgper1.setVisibility(View.INVISIBLE);
+        imgitem1.setVisibility(View.INVISIBLE);
+        imgper2.setVisibility(View.INVISIBLE);
+        imgitem2.setVisibility(View.INVISIBLE);
 
-
-        /*if(lr1==lr2||lr1==lr2||lr2==lr1||lr2==lr3||lr3==lr1||lr3==lr2){
-            asignacion();
-        }else {*/
-        //aca cod
-       /* }*/
-
-        handler.postDelayed(new Runnable() {
+       handler.postDelayed(new Runnable() {
             @Override
             public void run() {
                 cronometro_2.cuentaatras();
-                cambio();
+                //cambio();
                 libroaleatorio();
-
+                retardador();
 
             }
         },5000);
+
+    }
+
+    public void retardador(){
+
+        Log.i("a","retardador");
+
+        //vuelve invisible el texto
+        //txtclikeable.setVisibility(View.INVISIBLE);
+
+       // txtclikeable.setTextSize(0);
+
+
+
+        new Handler().postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                imgper1.setVisibility(View.VISIBLE);
+                imgitem1.setVisibility(View.VISIBLE);
+                imgper2.setVisibility(View.VISIBLE);
+                imgitem2.setVisibility(View.VISIBLE);
+
+
+                itemaleatorio(1,1);
+                personaje_aleatorio(1,1);
+
+                new Tarea_asincrona().execute();
+                new Tarea_asincrona2().execute();
+                cronometro_2.cuentaatras();
+                //es el cambio de cara es alpha
+                //cambio();
+
+            }
+        },1000);
     }
 
     public void evaluacion(){
@@ -279,26 +363,31 @@ public class Nivel_medio extends AppCompatActivity implements View.OnDragListene
         switch (perelegido){
 
             case 1:
-                if(libroelegido==ir){
+                if(libroelegido==randomiza[ir]){
                     score= score+1;
                     accionDeEvaluacion();
                     libroelegido=-1;
                     itemaleatorio(1,0);
+                    personaje_aleatorio(1,0);
+                    progreso=100;
 
                 }else {
                     score = score-1;
                     String string = String.valueOf(score);
                     puntaje.setText(string);
+                    finjuego();
                 }
                 break;
             case 2:
-                if(libroelegido==ir2){
+                if(libroelegido==randomiza[ir2]){
                     score= score+1;
                     accionDeEvaluacion();
                     // String string = String.valueOf(score);
                     // puntaje.setText(string);
                     libroelegido=-1;
                     itemaleatorio(0,1);
+                    personaje_aleatorio(0,1);
+                    progreso2=100;
 
 
                 }else {
@@ -307,12 +396,13 @@ public class Nivel_medio extends AppCompatActivity implements View.OnDragListene
                     puntaje.setText(string);
                 }
         }
+
     }
 
     //para reducir el codigo que estaba arriba
     public void accionDeEvaluacion(){
         cronometro_2.countDownTimer.cancel();
-        countDownTimer2.cancel();
+        //countDownTimer2.cancel();
         cronometro_2.cuentaatras();
         String string = String.valueOf(score);
         puntaje.setText(string);
@@ -382,12 +472,15 @@ public class Nivel_medio extends AppCompatActivity implements View.OnDragListene
     @Override
     public void onClick(View v) {
 
-        ClipData clipData = ClipData.newPlainText("","");
-        View.DragShadowBuilder shadowBuilder = new View.DragShadowBuilder(v);
 
-        v.startDrag(clipData,shadowBuilder,v,0);
-        v.setVisibility(View.INVISIBLE);
-        puntaje.setText("onclick");
+       /* switch (v.getId()){
+            case R.id.txt_clikeable:
+                retardador();
+                libroaleatorio();
+                break;
+
+
+        }*/
 
     }
 
@@ -504,4 +597,108 @@ public class Nivel_medio extends AppCompatActivity implements View.OnDragListene
 
         puntaje.setText("x "+x+"y "+y+"crono x"+cronometro.getX());
     }
+
+    public void finjuego(){
+
+        Intent intent = new Intent(this, Finjuego.class);
+        intent.putExtra("puntaje",puntaje.getText());
+        startActivity(intent);
+        finish();
+
+    }
+
+    public class Tarea_asincrona extends AsyncTask<Void,Integer,Void>{
+
+
+
+        @MainThread
+        protected void onPreExecute() {
+            progressBar.setVisibility(View.VISIBLE);
+           // progressBar2.setVisibility(View.VISIBLE);
+
+           // progreso =100;
+            //progreso2=100;
+           // progressBar.setProgress(100);
+           // progressBar2.setProgress(100);
+        }
+
+
+        @Override
+        protected Void doInBackground(Void... params) {
+
+            while (progreso>0){
+                progreso--;
+                publishProgress(progreso);
+                SystemClock.sleep(100);
+            }
+
+
+
+            return null;
+        }
+
+        @Override
+        protected void onProgressUpdate(Integer... values) {
+
+            progressBar.setProgress(values[0]);
+           //progressBar2.setProgress(values[0]);
+
+        }
+
+        @Override
+        protected void onPostExecute(Void result) {
+
+            finjuego();
+
+        }
+    }
+
+    public class Tarea_asincrona2 extends AsyncTask<Void,Integer,Void>{
+
+
+
+        @MainThread
+        protected void onPreExecute() {
+           // progressBar.setVisibility(View.VISIBLE);
+            progressBar2.setVisibility(View.VISIBLE);
+
+            // progreso =100;
+            //progreso2=100;
+            // progressBar.setProgress(100);
+            // progressBar2.setProgress(100);
+        }
+
+
+        @Override
+        protected Void doInBackground(Void... params) {
+
+            while (progreso2>0){
+                progreso2--;
+                publishProgress(progreso2);
+                SystemClock.sleep(100);
+            }
+
+            return null;
+        }
+
+        @Override
+        protected void onProgressUpdate(Integer... values) {
+
+            //progressBar.setProgress(values[0]);
+            progressBar2.setProgress(values[0]);
+
+        }
+
+        @Override
+        protected void onPostExecute(Void result) {
+
+            finjuego();
+
+        }
+    }
+
+
 }
+
+
+

@@ -20,7 +20,8 @@
         <activity android:name=".Nivel_medio" />
         <activity android:name=".Nivel_dificil" />
         <activity android:name=".Prueba" />
-        <activity android:name=".Practiceudacity"></activity>
+        <activity android:name=".Practiceudacity" />
+        <activity android:name=".Finjuego"></activity>
     </application>
 
 </manifest>

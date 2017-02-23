@@ -1,6 +1,7 @@
 package memo.game.avxc.memorizapp;
 
 import android.content.ClipData;
+import android.content.Intent;
 import android.os.CountDownTimer;
 import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
@@ -73,6 +74,10 @@ public class Nivel_facil extends AppCompatActivity implements View.OnDragListene
     int[] randomiza;
     int[] randomizalibro;
     int[] randomizaper;
+
+
+    //finjuego
+    Finjuego finjuego = new Finjuego();
 
 
     @Override
@@ -220,7 +225,27 @@ public class Nivel_facil extends AppCompatActivity implements View.OnDragListene
 
     public void personaje_aleatorio(){
 
-        randomizaper = new int[almacen.listapersonajes.length];
+        //int i =0;
+       // randomizaper = new int[almacen.listapersonajes.length];
+
+
+       /* randomizaper[i]= random.nextInt(almacen.listapersonajes.length);
+
+        for(i=1;i<almacen.listapersonajes.length;i++){
+
+            Log.i("c","ingreso al for");
+            randomizalibro[i]= random.nextInt(almacen.listapersonajes.length);
+            for(int j =0;j<i;j++){
+                if(randomizalibro[i]==randomizalibro[j]){
+                    i--;
+                }
+            }
+        }*/
+
+
+        int persojerandom = random.nextInt(almacen.listapersonajes.length);
+        imgper1.setImageResource(almacen.listapersonajes[persojerandom]);
+
 
 
     }
@@ -290,10 +315,11 @@ public class Nivel_facil extends AppCompatActivity implements View.OnDragListene
                 imgper1.setVisibility(View.VISIBLE);
                 imgitem1.setVisibility(View.VISIBLE);
                 itemaleatorio(1,0);
+                personaje_aleatorio();
 
                 cronometro_2.cuentaatras();
                 //es el cambio de cara es alpha
-                cambio();
+                //cambio();
 
             }
         },1000);
@@ -309,11 +335,13 @@ public class Nivel_facil extends AppCompatActivity implements View.OnDragListene
                     accionDeEvaluacion();
                     libroelegido=-1;
                     itemaleatorio(1,0);
+                    personaje_aleatorio();
 
                 }else {
                     score = score-1;
                     String string = String.valueOf(score);
                     puntaje.setText(string);
+                    finjuego();
                 }
                 break;
             case 2:
@@ -324,7 +352,7 @@ public class Nivel_facil extends AppCompatActivity implements View.OnDragListene
                    // puntaje.setText(string);
                     libroelegido=-1;
                     itemaleatorio(0,1);
-
+                    personaje_aleatorio();
 
                 }else {
                     score = score-1;
@@ -332,12 +360,13 @@ public class Nivel_facil extends AppCompatActivity implements View.OnDragListene
                     puntaje.setText(string);
                 }
         }
+
     }
 
     //para reducir el codigo que estaba arriba
     public void accionDeEvaluacion(){
         cronometro_2.countDownTimer.cancel();
-        countDownTimer2.cancel();
+        //countDownTimer2.cancel();
         cronometro_2.cuentaatras();
         String string = String.valueOf(score);
         puntaje.setText(string);
@@ -531,6 +560,15 @@ public class Nivel_facil extends AppCompatActivity implements View.OnDragListene
 
 
         puntaje.setText("x "+x+"y "+y+"crono x"+cronometro.getX());
+    }
+
+    public void finjuego(){
+
+        Intent intent = new Intent(this, Finjuego.class);
+        intent.putExtra("puntaje",puntaje.getText());
+        startActivity(intent);
+        finish();
+
     }
 
 

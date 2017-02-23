@@ -36,7 +36,7 @@ public Cronometro_2(TextView tv){
             @Override
             public void onTick(long millisUntilFinished) {
 
-               textView.setText(" "+(millisUntilFinished/1000));
+              // textView.setText(" "+(millisUntilFinished/1000));
                 //sonido
                 //click_tiempo.play(flujoDeMusica,0.2f,0.2f,0,0,1);
             }
@@ -44,7 +44,7 @@ public Cronometro_2(TextView tv){
             @Override
             public void onFinish() {
 
-                textView.setText("muere");
+                //textView.setText("muere");
                 /*mal++;
                 quitavidas();
                 azar();

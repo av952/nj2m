@@ -15,6 +15,7 @@
         android:layout_height="wrap_content"
         android:text="0"
         android:textSize="30dp" />
+
     <Space
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -23,7 +24,18 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:weightSum="4">
+        android:weightSum="6">
+
+        <ProgressBar
+            android:layout_width="wrap_content"
+            android:layout_height="100dp"
+            style="@style/Base.Widget.AppCompat.ProgressBar.Horizontal"
+            android:max="100"
+            android:progress="100"
+            android:id="@+id/progres1"
+            android:layout_weight="1"
+            android:rotation="90"
+            />
 
         <ImageView
             android:id="@+id/imgv_per1"
@@ -41,12 +53,13 @@
             android:layout_weight="0"
             android:src="@drawable/item1" />
 
+
+
         <ImageView
             android:id="@+id/imgv_per2"
             android:layout_width="100dp"
             android:layout_height="100dp"
             android:layout_gravity="center"
-            android:layout_marginLeft="50dp"
             android:layout_weight="1"
             android:src="@drawable/per1" />
 
@@ -54,29 +67,40 @@
             android:id="@+id/imgv_item2"
             android:layout_width="40dp"
             android:layout_height="wrap_content"
-            android:layout_marginRight="20dp"
             android:layout_weight="0"
             android:src="@drawable/item1" />
 
+        <ProgressBar
+            android:layout_width="wrap_content"
+            android:layout_height="100dp"
+            style="@style/Base.Widget.AppCompat.ProgressBar.Horizontal"
+            android:max="100"
+            android:progress="100"
+            android:id="@+id/progres2"
+            android:layout_weight="1"
+            android:layout_marginRight="20dp"
+            android:rotation="90"
+            />
+
     </LinearLayout>
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
 
 
 
-    <TextView
-        android:id="@+id/tiempo"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/groseria"
-        android:textSize="20dp"
-        android:layout_marginLeft="20dp"
-        />
+
+    </LinearLayout>
+
 
 
     <Space
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_weight="4" />
+
+
 
     <LinearLayout
         android:layout_width="match_parent"
