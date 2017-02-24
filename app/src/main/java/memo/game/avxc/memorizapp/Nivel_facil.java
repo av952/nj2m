@@ -4,6 +4,7 @@ import android.content.ClipData;
 import android.content.Intent;
 import android.os.CountDownTimer;
 import android.os.Handler;
+import android.os.SystemClock;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.DisplayMetrics;
@@ -15,6 +16,7 @@ import android.view.WindowManager;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import java.util.Random;
@@ -75,9 +77,16 @@ public class Nivel_facil extends AppCompatActivity implements View.OnDragListene
     int[] randomizalibro;
     int[] randomizaper;
 
+    //progressbar
+    private ProgressBar progressBar;
 
-    //finjuego
-    Finjuego finjuego = new Finjuego();
+    private int progreso;
+    //private Handler handler;
+
+
+    private int cuenta_atras=6;
+
+    private TextView groseria;
 
 
     @Override
@@ -129,6 +138,7 @@ public class Nivel_facil extends AppCompatActivity implements View.OnDragListene
         txtclikeable = (TextView)findViewById(R.id.txt_clikeable);
         txtclikeable.setOnClickListener(this);
 
+
         //VOLVIENDOLOS CLIEKEABLES
         /*imglibro1.setOnClickListener(this);
         imglibro2.setOnClickListener(this);
@@ -146,6 +156,7 @@ public class Nivel_facil extends AppCompatActivity implements View.OnDragListene
 
         //itemaleatorio(1,1);
         asignacion();
+        contador();
 
         //cronometro2
         cronometro = (TextView)findViewById(tiempo);
@@ -154,6 +165,15 @@ public class Nivel_facil extends AppCompatActivity implements View.OnDragListene
 
 
         //inicia new thread
+
+        //progressbar
+        progressBar = (ProgressBar)findViewById(R.id.progres1);
+        progressBar.setVisibility(View.INVISIBLE);
+
+        //handler
+        //handler = new Handler();
+
+        groseria =(TextView)findViewById(R.id.groseria);
 
     }
 
@@ -284,17 +304,17 @@ public class Nivel_facil extends AppCompatActivity implements View.OnDragListene
         imgper1.setVisibility(View.INVISIBLE);
         imgitem1.setVisibility(View.INVISIBLE);
 
-       /* handler.postDelayed(new Runnable() {
+       handler.postDelayed(new Runnable() {
             @Override
             public void run() {
                 cronometro_2.cuentaatras();
-                cambio();
+                //cambio();
                 libroaleatorio();
                 retardador();
 
 
             }
-        },5000);*/
+        },5000);
 
     }
 
@@ -314,12 +334,14 @@ public class Nivel_facil extends AppCompatActivity implements View.OnDragListene
             public void run() {
                 imgper1.setVisibility(View.VISIBLE);
                 imgitem1.setVisibility(View.VISIBLE);
-                itemaleatorio(1,0);
+                itemaleatorio(1, 0);
                 personaje_aleatorio();
+
 
                 cronometro_2.cuentaatras();
                 //es el cambio de cara es alpha
                 //cambio();
+                hilo();
 
             }
         },1000);
@@ -336,12 +358,14 @@ public class Nivel_facil extends AppCompatActivity implements View.OnDragListene
                     libroelegido=-1;
                     itemaleatorio(1,0);
                     personaje_aleatorio();
+                    progreso=100;
+                    groseria.setVisibility(View.INVISIBLE);
 
                 }else {
                     score = score-1;
                     String string = String.valueOf(score);
                     puntaje.setText(string);
-                    finjuego();
+                    //finjuego();
                 }
                 break;
             case 2:
@@ -417,8 +441,6 @@ public class Nivel_facil extends AppCompatActivity implements View.OnDragListene
                 break;
 
         }
-
-
         return true;
     }
 
@@ -435,22 +457,17 @@ public class Nivel_facil extends AppCompatActivity implements View.OnDragListene
 
     @Override
     public void onClick(View v) {
-
-
         switch (v.getId()){
             case R.id.txt_clikeable:
                 retardador();
                 libroaleatorio();
                 break;
-
-
         }
 
     }
 
     @Override
     public boolean onTouch(View v, MotionEvent event) {
-
         pinicialx = v.getX()-event.getRawX();
         pinicialy= v.getY()-event.getRawY();
 
@@ -463,8 +480,6 @@ public class Nivel_facil extends AppCompatActivity implements View.OnDragListene
 
 
                // puntaje.setText("down"+i);
-
-
 
                 if(i==imgv_libros[0]){
                     libroelegido =randomiza[0];
@@ -489,27 +504,6 @@ public class Nivel_facil extends AppCompatActivity implements View.OnDragListene
                     libroelegido =randomiza[6];
 
                 }
-
-                /*switch (i){
-                    case R.id.imgv_libro1:
-                        //puntaje.setText("libro 1");
-
-                        //evaluacion();
-                        break;
-                    case R.id.imgv_libro2:
-                        //puntaje.setText("libro 2");
-                        libroelegido =lr2;
-                        //evaluacion();
-                        break;
-                    case R.id.imgv_libro3:
-                       // puntaje.setText("libro 3");
-                        libroelegido=lr3;
-                        //evaluacion();
-                        break;
-                    case R.id.imgv_libro4:*/
-
-
-                //}
 
                 ClipData clipData = ClipData.newPlainText("","");
                 View.DragShadowBuilder shadowBuilder = new View.DragShadowBuilder(v);
@@ -551,7 +545,7 @@ public class Nivel_facil extends AppCompatActivity implements View.OnDragListene
         int height2 = metrics.heightPixels; // alto absoluto en pixels
         int densidad_dpi = metrics.densityDpi;
 
-        float x = imgper1.getX();
+       /* float x = imgper1.getX();
         float y = imgper1.getY();
 
         cronometro.setX(x);
@@ -559,7 +553,7 @@ public class Nivel_facil extends AppCompatActivity implements View.OnDragListene
 
 
 
-        puntaje.setText("x "+x+"y "+y+"crono x"+cronometro.getX());
+        puntaje.setText("x "+x+"y "+y+"crono x"+cronometro.getX());*/
     }
 
     public void finjuego(){
@@ -569,6 +563,62 @@ public class Nivel_facil extends AppCompatActivity implements View.OnDragListene
         startActivity(intent);
         finish();
 
+    }
+
+    public void hilo() {
+        //ver= false;
+        // puntaje.setText("hilo2");
+        progressBar.setVisibility(View.VISIBLE);
+        progreso=100;
+
+        new Thread(new Runnable() {
+            public void run() {
+                //puntaje.setText("run");
+
+                while (progreso > 0 ) {
+                    SystemClock.sleep(100);
+                    progreso--;
+
+                    // Update the progress bar
+                    handler.post(new Runnable() {
+
+                        public void run() {
+                            //puntaje.setText("handler2");
+                            progressBar.setProgress(progreso);
+
+                            if (progreso==50){
+                                groseria.setVisibility(View.VISIBLE);
+                            }
+                        }
+                    });
+
+                }
+                finjuego();
+
+            }
+
+
+        }).start();
+
+    }
+
+    //para la cuenta regresiva
+    public void contador(){
+
+        new CountDownTimer(5000,1000){
+
+            @Override
+            public void onTick(long millisUntilFinished) {
+                cuenta_atras--;
+                txtclikeable.setText(""+cuenta_atras);
+
+            }
+
+            @Override
+            public void onFinish() {
+
+            }
+        }.start();
     }
 
 

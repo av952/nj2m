@@ -3,10 +3,11 @@ package memo.game.avxc.memorizapp;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
 import android.view.WindowManager;
 import android.widget.TextView;
 
-public class Finjuego extends AppCompatActivity {
+public class Finjuego extends AppCompatActivity implements View.OnClickListener{
 
     TextView puntaje;
 
@@ -19,6 +20,7 @@ public class Finjuego extends AppCompatActivity {
 
 
         puntaje = (TextView)findViewById(R.id.puntuacion);
+        puntaje.setOnClickListener(this);
 
         finaliza();
     }
@@ -31,4 +33,17 @@ public class Finjuego extends AppCompatActivity {
         puntaje.setText(res);
 
     }
+
+    @Override
+    public void onClick(View v) {
+
+        switch (v.getId()){
+            case R.id.puntuacion:
+                finish();
+                break;
+        }
+
+    }
+
+
 }

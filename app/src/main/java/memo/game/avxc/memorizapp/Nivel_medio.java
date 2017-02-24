@@ -42,7 +42,9 @@ public class Nivel_medio extends AppCompatActivity implements View.OnDragListene
     //textvie
     private TextView puntaje,cronometro;
     //handler
-    private Handler handler;
+    private Handler handler, handler2, handler3;
+
+    private boolean ver =true;
 
     //score
     private int score=0;
@@ -151,6 +153,8 @@ public class Nivel_medio extends AppCompatActivity implements View.OnDragListene
 
         //handler
         handler = new Handler();
+        handler2 = new Handler();
+        handler3 = new Handler();
 
         //llamandometodo
 
@@ -347,9 +351,13 @@ public class Nivel_medio extends AppCompatActivity implements View.OnDragListene
 
                 itemaleatorio(1,1);
                 personaje_aleatorio(1,1);
+                //new Tarea_asincrona().execute();
 
-                new Tarea_asincrona().execute();
-                new Tarea_asincrona2().execute();
+                hilo1();
+                hilo2();
+
+
+
                 cronometro_2.cuentaatras();
                 //es el cambio de cara es alpha
                 //cambio();
@@ -599,11 +607,11 @@ public class Nivel_medio extends AppCompatActivity implements View.OnDragListene
     }
 
     public void finjuego(){
-
-        Intent intent = new Intent(this, Finjuego.class);
-        intent.putExtra("puntaje",puntaje.getText());
-        startActivity(intent);
-        finish();
+            Intent intent = new Intent(this, Finjuego.class);
+            intent.putExtra("puntaje",puntaje.getText());
+            startActivity(intent);
+            ver=false;
+            finish();
 
     }
 
@@ -614,7 +622,7 @@ public class Nivel_medio extends AppCompatActivity implements View.OnDragListene
         @MainThread
         protected void onPreExecute() {
             progressBar.setVisibility(View.VISIBLE);
-           // progressBar2.setVisibility(View.VISIBLE);
+            progressBar2.setVisibility(View.VISIBLE);
 
            // progreso =100;
             //progreso2=100;
@@ -632,6 +640,11 @@ public class Nivel_medio extends AppCompatActivity implements View.OnDragListene
                 SystemClock.sleep(100);
             }
 
+            while (progreso2>0){
+                progreso2--;
+                publishProgress(progreso2);
+                SystemClock.sleep(100);
+            }
 
 
             return null;
@@ -641,50 +654,6 @@ public class Nivel_medio extends AppCompatActivity implements View.OnDragListene
         protected void onProgressUpdate(Integer... values) {
 
             progressBar.setProgress(values[0]);
-           //progressBar2.setProgress(values[0]);
-
-        }
-
-        @Override
-        protected void onPostExecute(Void result) {
-
-            finjuego();
-
-        }
-    }
-
-    public class Tarea_asincrona2 extends AsyncTask<Void,Integer,Void>{
-
-
-
-        @MainThread
-        protected void onPreExecute() {
-           // progressBar.setVisibility(View.VISIBLE);
-            progressBar2.setVisibility(View.VISIBLE);
-
-            // progreso =100;
-            //progreso2=100;
-            // progressBar.setProgress(100);
-            // progressBar2.setProgress(100);
-        }
-
-
-        @Override
-        protected Void doInBackground(Void... params) {
-
-            while (progreso2>0){
-                progreso2--;
-                publishProgress(progreso2);
-                SystemClock.sleep(100);
-            }
-
-            return null;
-        }
-
-        @Override
-        protected void onProgressUpdate(Integer... values) {
-
-            //progressBar.setProgress(values[0]);
             progressBar2.setProgress(values[0]);
 
         }
@@ -696,7 +665,71 @@ public class Nivel_medio extends AppCompatActivity implements View.OnDragListene
 
         }
     }
+    public void hilo1() {
+        //puntaje.setText("hilo");
+        //ver= false;
+        progressBar.setVisibility(View.VISIBLE);
+        progreso=100;
 
+        new Thread(new Runnable() {
+            public void run() {
+                //puntaje.setText("run");
+
+                    while (progreso > 0) {
+                        SystemClock.sleep(100);
+                        progreso--;
+
+                        // Update the progress bar
+                        handler2.post(new Runnable() {
+                            public void run() {
+                                //puntaje.setText("handler");
+
+
+                                progressBar.setProgress(progreso);
+                            }
+                        });
+                    }
+
+                finjuego();
+            }
+        }).start();
+
+    }
+
+    public void hilo2() {
+        //ver= false;
+        // puntaje.setText("hilo2");
+        progressBar2.setVisibility(View.VISIBLE);
+        progreso2=100;
+
+        new Thread(new Runnable() {
+            public void run() {
+                //puntaje.setText("run");
+
+                while (progreso2 > 0 && ver==true) {
+                    SystemClock.sleep(100);
+                    progreso2--;
+
+                    // Update the progress bar
+                    handler3.post(new Runnable() {
+
+                        public void run() {
+                            //puntaje.setText("handler2");
+                            progressBar2.setProgress(progreso2);
+                        }
+                    });
+
+                }
+                finjuego();
+
+
+
+            }
+
+
+        }).start();
+
+    }
 
 }
 

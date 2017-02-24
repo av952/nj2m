@@ -35,6 +35,7 @@
             android:id="@+id/progres1"
             android:layout_weight="1"
             android:rotation="90"
+            android:progressTint="@color/colorAccent"
             />
 
         <ImageView
@@ -80,6 +81,8 @@
             android:layout_weight="1"
             android:layout_marginRight="20dp"
             android:rotation="90"
+            android:progressTint="@color/colorAccent"
+
             />
 
     </LinearLayout>
