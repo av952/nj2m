@@ -305,7 +305,7 @@ public class Nivel_dificil extends AppCompatActivity implements View.OnDragListe
         }
     }
 
-    public void personaje_aleatorio(int a, int b,int c, int d) {
+    public void personaje_aleatorio(int a, int b, int c, int d) {
 
         int i = 0;
         randomizaper = new int[almacen.listapersonajes.length];
@@ -480,9 +480,12 @@ public class Nivel_dificil extends AppCompatActivity implements View.OnDragListe
                     puntaje.setText(string);
                     finjuego();
                 }
+                break;
 
             case 3:
                 if (libroelegido == randomiza[ir3]) {
+
+                    Log.i("e","correcto personaje 3 ");
                     score = score + 1;
                     accionDeEvaluacion();
                     // String string = String.valueOf(score);
@@ -495,14 +498,18 @@ public class Nivel_dificil extends AppCompatActivity implements View.OnDragListe
 
 
                 } else {
+                    Log.i("else", "ingreso al else del per3");
                     //score = score - 1;
                     String string = String.valueOf(score);
                     puntaje.setText(string);
-                    finjuego();
+                   finjuego();
                 }
+                break;
 
             case 4:
                 if (libroelegido == randomiza[ir4]) {
+                    Log.i("e","correcto personaje 4 ");
+
                     score = score + 1;
                     accionDeEvaluacion();
                     // String string = String.valueOf(score);
@@ -520,6 +527,7 @@ public class Nivel_dificil extends AppCompatActivity implements View.OnDragListe
                     puntaje.setText(string);
                     finjuego();
                 }
+                break;
 
         }
 
@@ -594,7 +602,6 @@ public class Nivel_dificil extends AppCompatActivity implements View.OnDragListe
 
         }
 
-
         return true;
     }
 
@@ -636,10 +643,7 @@ public class Nivel_dificil extends AppCompatActivity implements View.OnDragListe
 
                 //i me devuelve el valor del elemento selecionado
                 int i = v.getId();
-
-
                 // puntaje.setText("down"+i);
-
 
                 if (i == imgv_libros[0]) {
                     libroelegido = randomiza[0];
@@ -659,9 +663,6 @@ public class Nivel_dificil extends AppCompatActivity implements View.OnDragListe
 
                 } else if (i == imgv_libros[5]) {
                     libroelegido = randomiza[5];
-
-                } else if (i == imgv_libros[6]) {
-                    libroelegido = randomiza[6];
 
                 }
 
@@ -696,8 +697,6 @@ public class Nivel_dificil extends AppCompatActivity implements View.OnDragListe
 
                 dX = v.getX() - event.getRawX();
                 dY = v.getY() - event.getRawY();
-
-
                 return true;
 
         }
@@ -738,17 +737,20 @@ public class Nivel_dificil extends AppCompatActivity implements View.OnDragListe
     }
 
     public void finjuego() {
+        Log.i("fin","fin juego");
         seleccion=1;
-
-        Intent intent = new Intent(this, Finjuego.class);
-        intent.putExtra("puntaje", puntaje.getText());
-        startActivity(intent);
-        ver = false;
-
         hilo_1.interrupt();
         hilo_2.interrupt();
         hilo_3.interrupt();
         hilo_4.interrupt();
+
+        Intent intent = new Intent(this, Finjuego.class);
+        intent.putExtra("puntaje", puntaje.getText());
+
+        startActivity(intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP |Intent.FLAG_ACTIVITY_SINGLE_TOP));
+        ver = false;
+
+
 
         finish();
 

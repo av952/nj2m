@@ -630,13 +630,15 @@ public class Nivel_medio extends AppCompatActivity implements View.OnDragListene
     }
 
     public void finjuego() {
-        Intent intent = new Intent(this, Finjuego.class);
-        intent.putExtra("puntaje", puntaje.getText());
-        startActivity(intent);
-        ver = false;
         seleccion=1;
         hilo_1.interrupt();
         hilo_2.interrupt();
+        Intent intent = new Intent(this, Finjuego.class);
+        intent.putExtra("puntaje", puntaje.getText());
+        startActivity(intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP |Intent.FLAG_ACTIVITY_SINGLE_TOP));
+
+        ver = false;
+
         finish();
 
 

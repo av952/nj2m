@@ -549,7 +549,7 @@ public class Nivel_facil extends AppCompatActivity implements View.OnDragListene
 
         Intent intent = new Intent(this, Finjuego.class);
         intent.putExtra("puntaje",puntaje.getText());
-        startActivity(intent);
+        startActivity(intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP |Intent.FLAG_ACTIVITY_SINGLE_TOP));
         seleccion=1;
         finish();
 
