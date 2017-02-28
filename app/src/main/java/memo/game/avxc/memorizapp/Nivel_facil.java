@@ -88,7 +88,10 @@ public class Nivel_facil extends AppCompatActivity implements View.OnDragListene
 
     private TextView groseria;
 
+    private int seleccion = 0;
 
+
+//**********************************************************************************************************************************
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -168,7 +171,7 @@ public class Nivel_facil extends AppCompatActivity implements View.OnDragListene
 
         //progressbar
         progressBar = (ProgressBar)findViewById(R.id.progres1);
-        progressBar.setVisibility(View.INVISIBLE);
+        progressBar.setVisibility(View.GONE);
 
         //handler
         //handler = new Handler();
@@ -301,8 +304,8 @@ public class Nivel_facil extends AppCompatActivity implements View.OnDragListene
         imglibro6.setImageResource(almacen.listaitem[randomiza[5]]);
         imglibro6.setAnimation(animation2);
 
-        imgper1.setVisibility(View.INVISIBLE);
-        imgitem1.setVisibility(View.INVISIBLE);
+        imgper1.setVisibility(View.GONE);
+        imgitem1.setVisibility(View.GONE);
 
        handler.postDelayed(new Runnable() {
             @Override
@@ -323,9 +326,10 @@ public class Nivel_facil extends AppCompatActivity implements View.OnDragListene
         Log.i("a","retardador");
 
         //vuelve invisible el texto
-        txtclikeable.setVisibility(View.INVISIBLE);
+        //con gone no ocupa espacio
+        txtclikeable.setVisibility(View.GONE);
 
-        txtclikeable.setTextSize(0);
+        //txtclikeable.setTextSize(0);
 
 
 
@@ -359,30 +363,15 @@ public class Nivel_facil extends AppCompatActivity implements View.OnDragListene
                     itemaleatorio(1,0);
                     personaje_aleatorio();
                     progreso=100;
-                    groseria.setVisibility(View.INVISIBLE);
+                    groseria.setVisibility(View.GONE);
 
                 }else {
-                    score = score-1;
+                    //score = score-1;
                     String string = String.valueOf(score);
                     puntaje.setText(string);
-                    //finjuego();
+                    finjuego();
                 }
                 break;
-            case 2:
-                if(libroelegido==ir2){
-                    score= score+1;
-                    accionDeEvaluacion();
-                   // String string = String.valueOf(score);
-                   // puntaje.setText(string);
-                    libroelegido=-1;
-                    itemaleatorio(0,1);
-                    personaje_aleatorio();
-
-                }else {
-                    score = score-1;
-                    String string = String.valueOf(score);
-                    puntaje.setText(string);
-                }
         }
 
     }
@@ -561,6 +550,7 @@ public class Nivel_facil extends AppCompatActivity implements View.OnDragListene
         Intent intent = new Intent(this, Finjuego.class);
         intent.putExtra("puntaje",puntaje.getText());
         startActivity(intent);
+        seleccion=1;
         finish();
 
     }
@@ -591,10 +581,9 @@ public class Nivel_facil extends AppCompatActivity implements View.OnDragListene
                             }
                         }
                     });
-
                 }
-                finjuego();
-
+                seleccion++;
+                prueba();
             }
 
 
@@ -605,7 +594,7 @@ public class Nivel_facil extends AppCompatActivity implements View.OnDragListene
     //para la cuenta regresiva
     public void contador(){
 
-        new CountDownTimer(5000,1000){
+        new CountDownTimer(6000,1000){
 
             @Override
             public void onTick(long millisUntilFinished) {
@@ -621,6 +610,20 @@ public class Nivel_facil extends AppCompatActivity implements View.OnDragListene
         }.start();
     }
 
+    public void prueba() {
+
+        if (seleccion == 1) {
+            finjuego();
+
+        }
+    }
+
+    @Override
+    public void onBackPressed(){
+        seleccion=1;
+        finish();
+
+    }
 
 
 }

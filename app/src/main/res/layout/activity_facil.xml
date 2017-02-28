@@ -6,6 +6,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:background="@drawable/mochagrunge"
+
     tools:context="memo.game.avxc.memorizapp.Nivel_facil">
 
     <TextView
@@ -13,6 +15,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="0"
+        android:textColor="@color/texto_primario"
         android:textSize="30dp" />
     <Space
         android:layout_width="match_parent"
@@ -26,6 +29,7 @@
         android:text="@string/tomatetutiempo"
         android:textAlignment="center"
         android:id="@+id/txt_clikeable"
+        android:textColor="@color/texto_primario"
         />
 
     <LinearLayout
@@ -55,6 +59,7 @@
                     android:layout_height="100dp"
                     android:layout_gravity="center"
                     android:layout_weight="0"
+
                     android:src="@drawable/per1" />
 
                 <ImageView
@@ -76,6 +81,7 @@
                 android:text="@string/groseria"
                 android:textSize="20dp"
                 android:visibility="invisible"
+                android:textColor="@color/texto_primario"
                 android:layout_gravity="center"
                 android:id="@+id/groseria"
                 />
@@ -89,8 +95,11 @@
                 android:id="@+id/progres1"
                 android:rotation="0"
                 android:layout_marginTop="20dp"
-                android:progressTint="@color/colorAccent"
+                android:progressTint="@color/acento"
+                android:background="@color/texto_primario"
                 android:layout_gravity="center"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp"
                 android:layout_marginBottom="10dp"
                 />
 

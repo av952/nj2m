@@ -5,6 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:background="@drawable/mochagrunge"
     tools:context="memo.game.avxc.memorizapp.Menu"
     android:weightSum="2"
     >
@@ -33,7 +34,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="horizontal"
-    android:background="@color/colorAccent"
+    android:background="@color/acento"
     android:weightSum="3"
     >
         <Button

@@ -8,5 +8,10 @@
 
     <!-- MY COLORS-->
     <color name="negro">#000000</color>
+    <color name="primario">#00BCD4</color>
+    <color name="oscuro_primario">#0097A7</color>
+    <color name="primario_claro">#B2EBF2</color>
+    <color name="texto_primario">#212121</color>
+    <color name="acento">#CDDC39</color>
 
 </resources>

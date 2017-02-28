@@ -21,69 +21,140 @@
         android:layout_height="wrap_content"
         android:layout_weight="6" />
 
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="100dp"
+        android:text="@string/tomatetutiempo"
+        android:textAlignment="center"
+        android:id="@+id/tv_cuenta_atras"
+        />
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:orientation="horizontal"
         android:weightSum="6">
 
-        <ProgressBar
+        <LinearLayout
             android:layout_width="wrap_content"
-            android:layout_height="100dp"
-            style="@style/Base.Widget.AppCompat.ProgressBar.Horizontal"
-            android:max="100"
-            android:progress="100"
-            android:id="@+id/progres1"
-            android:layout_weight="1"
-            android:rotation="90"
-            android:progressTint="@color/colorAccent"
-            />
-
-        <ImageView
-            android:id="@+id/imgv_per1"
-            android:layout_width="100dp"
-            android:layout_height="100dp"
-            android:layout_gravity="center"
-            android:layout_weight="1"
-            android:src="@drawable/per1" />
-
-
-        <ImageView
-            android:id="@+id/imgv_item"
-            android:layout_width="40dp"
             android:layout_height="wrap_content"
-            android:layout_weight="0"
-            android:src="@drawable/item1" />
+            android:orientation="vertical"
+            android:layout_marginLeft="10dp">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:id="@+id/imgv_per1"
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    android:layout_gravity="center"
+                    android:layout_weight="1"
+                    android:src="@drawable/per1" />
+                <ImageView
+                    android:id="@+id/imgv_item"
+                    android:layout_width="40dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0"
+                    android:layout_marginRight="10dp"
+                    android:src="@drawable/item1" />
+
+            </LinearLayout>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/groseria"
+                android:textSize="20dp"
+                android:visibility="invisible"
+                android:layout_gravity="center"
+                android:id="@+id/groseria"
+                />
+
+
+            <ProgressBar
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                style="@style/Base.Widget.AppCompat.ProgressBar.Horizontal"
+                android:max="100"
+                android:progress="100"
+                android:id="@+id/progres1"
+                android:layout_weight="1"
+                android:rotation="0"
+                android:layout_gravity="center"
+                android:progressTint="@color/colorAccent"
+                />
 
 
 
-        <ImageView
-            android:id="@+id/imgv_per2"
-            android:layout_width="100dp"
-            android:layout_height="100dp"
-            android:layout_gravity="center"
-            android:layout_weight="1"
-            android:src="@drawable/per1" />
+        </LinearLayout>
 
-        <ImageView
-            android:id="@+id/imgv_item2"
-            android:layout_width="40dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="0"
-            android:src="@drawable/item1" />
-
-        <ProgressBar
+        <LinearLayout
             android:layout_width="wrap_content"
-            android:layout_height="100dp"
-            style="@style/Base.Widget.AppCompat.ProgressBar.Horizontal"
-            android:max="100"
-            android:progress="100"
-            android:id="@+id/progres2"
-            android:layout_weight="1"
-            android:layout_marginRight="20dp"
-            android:rotation="90"
-            android:progressTint="@color/colorAccent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginLeft="10dp">
 
-            />
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:id="@+id/imgv_per2"
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    android:layout_gravity="center"
+                    android:layout_weight="1"
+                    android:src="@drawable/per1" />
+
+                <ImageView
+                    android:id="@+id/imgv_item2"
+                    android:layout_width="40dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0"
+                    android:layout_marginRight="10dp"
+                    android:src="@drawable/item1" />
+
+
+            </LinearLayout>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/groseria"
+                android:textSize="20dp"
+                android:visibility="invisible"
+                android:layout_gravity="center"
+                android:id="@+id/groseria2"
+                />
+
+
+            <ProgressBar
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                style="@style/Base.Widget.AppCompat.ProgressBar.Horizontal"
+                android:max="100"
+                android:progress="100"
+                android:id="@+id/progres2"
+                android:layout_weight="1"
+                android:rotation="0"
+                android:layout_gravity="center"
+                android:progressTint="@color/colorAccent"
+
+                />
+
+
+        </LinearLayout>
+
+
+
+
+
+
 
     </LinearLayout>
 

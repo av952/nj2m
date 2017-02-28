@@ -97,4 +97,18 @@ public class Menu extends AppCompatActivity implements View.OnClickListener{
     }
 
     }
+
+    private static final int INTERVALO = 2000;
+    private long tiempoPrimerClick;
+
+    @Override
+    public void onBackPressed(){
+        if (tiempoPrimerClick + INTERVALO > System.currentTimeMillis()){
+            super.onBackPressed();
+            return;
+        }else {
+            Toast.makeText(this, "Vuelve a presionar para salir", Toast.LENGTH_SHORT).show();
+        }
+        tiempoPrimerClick = System.currentTimeMillis();
+    }
 }

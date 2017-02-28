@@ -1,47 +1,375 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/activity_nivel_dificil"
+    android:id="@+id/activity_facil"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
     tools:context="memo.game.avxc.memorizapp.Nivel_dificil">
 
+
     <TextView
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:text="DIFICIL"
-    android:textSize="20dp"
-    android:id="@+id/texto"
-    />
-    <TextView
+        android:id="@+id/puntaje"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="DIFICIL"
-        android:textSize="20dp"
-        android:id="@+id/texto2"
+        android:text="0"
+        android:textSize="30dp" />
+
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="6" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="100dp"
+        android:text="@string/tomatetutiempo"
+        android:textAlignment="center"
+        android:id="@+id/tv_cuenta_atras"
         />
 
-
-
-    <FrameLayout
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:weightSum="6">
 
-        <ImageView
+        <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/itemprueba"
-            android:src="@drawable/per1"
-            />
+            android:orientation="vertical"
+            android:layout_marginLeft="10dp">
 
-        <ImageView
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:id="@+id/imgv_per1"
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    android:layout_gravity="center"
+                    android:layout_weight="1"
+                    android:src="@drawable/per1" />
+                <ImageView
+                    android:id="@+id/imgv_item"
+                    android:layout_width="40dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0"
+                    android:layout_marginRight="10dp"
+                    android:src="@drawable/item1" />
+
+            </LinearLayout>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/groseria"
+                android:textSize="20dp"
+                android:visibility="invisible"
+                android:layout_gravity="center"
+                android:id="@+id/groseria"
+                />
+
+
+            <ProgressBar
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                style="@style/Base.Widget.AppCompat.ProgressBar.Horizontal"
+                android:max="100"
+                android:progress="100"
+                android:id="@+id/progres1"
+                android:layout_weight="1"
+                android:rotation="0"
+                android:layout_gravity="center"
+                android:progressTint="@color/colorAccent"
+                />
+
+
+
+        </LinearLayout>
+
+
+
+        <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/personajeprueba"
-            />
-    </FrameLayout>
+            android:orientation="vertical"
+            android:layout_marginLeft="10dp">
 
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:id="@+id/imgv_per2"
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    android:layout_gravity="center"
+                    android:layout_weight="1"
+                    android:src="@drawable/per1" />
+
+                <ImageView
+                    android:id="@+id/imgv_item2"
+                    android:layout_width="40dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0"
+                    android:layout_marginRight="10dp"
+                    android:src="@drawable/item1" />
+
+
+            </LinearLayout>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/groseria"
+                android:textSize="20dp"
+                android:visibility="invisible"
+                android:layout_gravity="center"
+                android:id="@+id/groseria2"
+                />
+
+
+            <ProgressBar
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                style="@style/Base.Widget.AppCompat.ProgressBar.Horizontal"
+                android:max="100"
+                android:progress="100"
+                android:id="@+id/progres2"
+                android:layout_weight="1"
+                android:rotation="0"
+                android:layout_gravity="center"
+                android:progressTint="@color/colorAccent"
+
+                />
+
+
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+    <!--*************************************************************************-->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:weightSum="6">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginLeft="10dp">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:id="@+id/imgv_per3"
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    android:layout_gravity="center"
+                    android:layout_weight="1"
+                    android:src="@drawable/per1" />
+                <ImageView
+                    android:id="@+id/imgv_ite3"
+                    android:layout_width="40dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0"
+                    android:layout_marginRight="10dp"
+                    android:src="@drawable/item1" />
+
+            </LinearLayout>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/groseria"
+                android:textSize="20dp"
+                android:visibility="invisible"
+                android:layout_gravity="center"
+                android:id="@+id/groseri3"
+                />
+
+
+            <ProgressBar
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                style="@style/Base.Widget.AppCompat.ProgressBar.Horizontal"
+                android:max="100"
+                android:progress="100"
+                android:id="@+id/progres3"
+                android:layout_weight="1"
+                android:rotation="0"
+                android:layout_gravity="center"
+                android:progressTint="@color/colorAccent"
+                />
+
+
+
+        </LinearLayout>
+
+
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginLeft="10dp">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:id="@+id/imgv_per4"
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    android:layout_gravity="center"
+                    android:layout_weight="1"
+                    android:src="@drawable/per1" />
+
+                <ImageView
+                    android:id="@+id/imgv_item4"
+                    android:layout_width="40dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0"
+                    android:layout_marginRight="10dp"
+                    android:src="@drawable/item1" />
+
+
+            </LinearLayout>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/groseria"
+                android:textSize="20dp"
+                android:visibility="invisible"
+                android:layout_gravity="center"
+                android:id="@+id/groseria4"
+                />
+
+
+            <ProgressBar
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                style="@style/Base.Widget.AppCompat.ProgressBar.Horizontal"
+                android:max="100"
+                android:progress="100"
+                android:id="@+id/progres4"
+                android:layout_weight="1"
+                android:rotation="0"
+                android:layout_gravity="center"
+                android:progressTint="@color/colorAccent"
+
+                />
+
+
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+
+
+    <!--************************************************************final personajes -->
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+
+
+
+    </LinearLayout>
+
+
+
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="4" />
+
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:weightSum="3">
+
+        <ImageView
+            android:id="@+id/imgv_libro1"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_marginRight="10dp"
+            android:layout_weight="1"
+            android:src="@drawable/libro1" />
+
+        <ImageView
+            android:id="@+id/imgv_libro2"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_marginRight="10dp"
+            android:layout_weight="1"
+            android:src="@drawable/libro2" />
+
+        <ImageView
+            android:id="@+id/imgv_libro3"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_marginRight="10dp"
+            android:layout_weight="1"
+            android:src="@drawable/libro3"
+
+            />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:orientation="horizontal"
+        android:layout_weight="3"
+        android:weightSum="3">
+
+        <ImageView
+            android:id="@+id/imgv_libro4"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_marginRight="10dp"
+            android:layout_weight="1"
+            android:src="@drawable/libro1" />
+
+        <ImageView
+            android:id="@+id/imgv_libro5"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_marginRight="10dp"
+            android:layout_weight="1"
+            android:src="@drawable/libro2" />
+
+        <ImageView
+            android:id="@+id/imgv_libro6"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_marginRight="10dp"
+            android:layout_weight="1"
+            android:src="@drawable/libro3"
+
+            />
+    </LinearLayout>
 
 
 </LinearLayout>
