@@ -6,6 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:background="@drawable/mochagrunge"
     tools:context="memo.game.avxc.memorizapp.Nivel_dificil">
 
 
@@ -24,16 +25,18 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textSize="100dp"
+        android:textSize="@dimen/ancho"
         android:text="@string/tomatetutiempo"
         android:textAlignment="center"
         android:id="@+id/tv_cuenta_atras"
+
         />
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
+        android:gravity="center"
         android:weightSum="6">
 
         <LinearLayout
@@ -49,15 +52,15 @@
 
                 <ImageView
                     android:id="@+id/imgv_per1"
-                    android:layout_width="100dp"
-                    android:layout_height="100dp"
+                    android:layout_width="@dimen/ancho"
+                    android:layout_height="@dimen/alto"
                     android:layout_gravity="center"
                     android:layout_weight="1"
                     android:src="@drawable/per1" />
                 <ImageView
                     android:id="@+id/imgv_item"
-                    android:layout_width="40dp"
-                    android:layout_height="wrap_content"
+                    android:layout_width="@dimen/tam_item"
+                    android:layout_height="@dimen/tam_item"
                     android:layout_weight="0"
                     android:layout_marginRight="10dp"
                     android:src="@drawable/item1" />
@@ -68,7 +71,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/groseria"
-                android:textSize="20dp"
+                android:textSize="@dimen/tam_groseria"
                 android:visibility="invisible"
                 android:layout_gravity="center"
                 android:id="@+id/groseria"
@@ -82,10 +85,14 @@
                 android:max="100"
                 android:progress="100"
                 android:id="@+id/progres1"
-                android:layout_weight="1"
                 android:rotation="0"
+                android:layout_marginTop="0dp"
+                android:progressTint="@color/acento"
+                android:background="@color/texto_primario"
                 android:layout_gravity="center"
-                android:progressTint="@color/colorAccent"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp"
+                android:layout_marginBottom="10dp"
                 />
 
 
@@ -107,16 +114,16 @@
 
                 <ImageView
                     android:id="@+id/imgv_per2"
-                    android:layout_width="100dp"
-                    android:layout_height="100dp"
+                    android:layout_width="@dimen/ancho"
+                    android:layout_height="@dimen/alto"
                     android:layout_gravity="center"
                     android:layout_weight="1"
                     android:src="@drawable/per1" />
 
                 <ImageView
                     android:id="@+id/imgv_item2"
-                    android:layout_width="40dp"
-                    android:layout_height="wrap_content"
+                    android:layout_width="@dimen/tam_item"
+                    android:layout_height="@dimen/tam_item"
                     android:layout_weight="0"
                     android:layout_marginRight="10dp"
                     android:src="@drawable/item1" />
@@ -128,7 +135,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/groseria"
-                android:textSize="20dp"
+                android:textSize="@dimen/tam_groseria"
                 android:visibility="invisible"
                 android:layout_gravity="center"
                 android:id="@+id/groseria2"
@@ -142,11 +149,14 @@
                 android:max="100"
                 android:progress="100"
                 android:id="@+id/progres2"
-                android:layout_weight="1"
                 android:rotation="0"
+                android:layout_marginTop="0dp"
+                android:progressTint="@color/acento"
+                android:background="@color/texto_primario"
                 android:layout_gravity="center"
-                android:progressTint="@color/colorAccent"
-
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp"
+                android:layout_marginBottom="10dp"
                 />
 
 
@@ -160,6 +170,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
+        android:gravity="center"
         android:weightSum="6">
 
         <LinearLayout
@@ -175,15 +186,15 @@
 
                 <ImageView
                     android:id="@+id/imgv_per3"
-                    android:layout_width="100dp"
-                    android:layout_height="100dp"
+                    android:layout_width="@dimen/ancho"
+                    android:layout_height="@dimen/alto"
                     android:layout_gravity="center"
                     android:layout_weight="1"
                     android:src="@drawable/per1" />
                 <ImageView
                     android:id="@+id/imgv_ite3"
-                    android:layout_width="40dp"
-                    android:layout_height="wrap_content"
+                    android:layout_width="@dimen/tam_item"
+                    android:layout_height="@dimen/tam_item"
                     android:layout_weight="0"
                     android:layout_marginRight="10dp"
                     android:src="@drawable/item1" />
@@ -194,7 +205,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/groseria"
-                android:textSize="20dp"
+                android:textSize="@dimen/tam_groseria"
                 android:visibility="invisible"
                 android:layout_gravity="center"
                 android:id="@+id/groseri3"
@@ -208,13 +219,15 @@
                 android:max="100"
                 android:progress="100"
                 android:id="@+id/progres3"
-                android:layout_weight="1"
                 android:rotation="0"
+                android:layout_marginTop="0dp"
+                android:progressTint="@color/acento"
+                android:background="@color/texto_primario"
                 android:layout_gravity="center"
-                android:progressTint="@color/colorAccent"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp"
+                android:layout_marginBottom="10dp"
                 />
-
-
 
         </LinearLayout>
 
@@ -233,16 +246,16 @@
 
                 <ImageView
                     android:id="@+id/imgv_per4"
-                    android:layout_width="100dp"
-                    android:layout_height="100dp"
+                    android:layout_width="@dimen/ancho"
+                    android:layout_height="@dimen/alto"
                     android:layout_gravity="center"
                     android:layout_weight="1"
                     android:src="@drawable/per1" />
 
                 <ImageView
                     android:id="@+id/imgv_item4"
-                    android:layout_width="40dp"
-                    android:layout_height="wrap_content"
+                    android:layout_width="@dimen/tam_item"
+                    android:layout_height="@dimen/tam_item"
                     android:layout_weight="0"
                     android:layout_marginRight="10dp"
                     android:src="@drawable/item1" />
@@ -254,7 +267,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/groseria"
-                android:textSize="20dp"
+                android:textSize="@dimen/tam_groseria"
                 android:visibility="invisible"
                 android:layout_gravity="center"
                 android:id="@+id/groseria4"
@@ -268,11 +281,14 @@
                 android:max="100"
                 android:progress="100"
                 android:id="@+id/progres4"
-                android:layout_weight="1"
                 android:rotation="0"
+                android:layout_marginTop="0dp"
+                android:progressTint="@color/acento"
+                android:background="@color/texto_primario"
                 android:layout_gravity="center"
-                android:progressTint="@color/colorAccent"
-
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp"
+                android:layout_marginBottom="10dp"
                 />
 
 
@@ -282,19 +298,13 @@
     </LinearLayout>
 
 
-
     <!--************************************************************final personajes -->
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
-
-
-
     </LinearLayout>
-
-
 
     <Space
         android:layout_width="match_parent"
@@ -311,24 +321,24 @@
 
         <ImageView
             android:id="@+id/imgv_libro1"
-            android:layout_width="100dp"
-            android:layout_height="100dp"
+            android:layout_width="@dimen/ancho"
+            android:layout_height="@dimen/alto"
             android:layout_marginRight="10dp"
             android:layout_weight="1"
             android:src="@drawable/libro1" />
 
         <ImageView
             android:id="@+id/imgv_libro2"
-            android:layout_width="100dp"
-            android:layout_height="100dp"
+            android:layout_width="@dimen/ancho"
+            android:layout_height="@dimen/alto"
             android:layout_marginRight="10dp"
             android:layout_weight="1"
             android:src="@drawable/libro2" />
 
         <ImageView
             android:id="@+id/imgv_libro3"
-            android:layout_width="100dp"
-            android:layout_height="100dp"
+            android:layout_width="@dimen/ancho"
+            android:layout_height="@dimen/alto"
             android:layout_marginRight="10dp"
             android:layout_weight="1"
             android:src="@drawable/libro3"
@@ -346,24 +356,24 @@
 
         <ImageView
             android:id="@+id/imgv_libro4"
-            android:layout_width="100dp"
-            android:layout_height="100dp"
+            android:layout_width="@dimen/ancho"
+            android:layout_height="@dimen/alto"
             android:layout_marginRight="10dp"
             android:layout_weight="1"
             android:src="@drawable/libro1" />
 
         <ImageView
             android:id="@+id/imgv_libro5"
-            android:layout_width="100dp"
-            android:layout_height="100dp"
+            android:layout_width="@dimen/ancho"
+            android:layout_height="@dimen/alto"
             android:layout_marginRight="10dp"
             android:layout_weight="1"
             android:src="@drawable/libro2" />
 
         <ImageView
             android:id="@+id/imgv_libro6"
-            android:layout_width="100dp"
-            android:layout_height="100dp"
+            android:layout_width="@dimen/ancho"
+            android:layout_height="@dimen/alto"
             android:layout_marginRight="10dp"
             android:layout_weight="1"
             android:src="@drawable/libro3"

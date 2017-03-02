@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+
+    <dimen name="ancho">150dp</dimen>
+    <dimen name="alto">150dp</dimen>
+    <dimen name="tam_groseria">30dp</dimen>
+    <dimen name="tam_item">60dp</dimen>
+
+</resources>

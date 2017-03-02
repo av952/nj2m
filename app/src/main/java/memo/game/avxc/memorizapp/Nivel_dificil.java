@@ -216,8 +216,8 @@ public class Nivel_dificil extends AppCompatActivity implements View.OnDragListe
 
         groseria1 = (TextView) findViewById(R.id.groseria);
         groseria2 = (TextView) findViewById(R.id.groseria2);
-        groseria3 = (TextView) findViewById(R.id.groseria2);
-        groseria4 = (TextView) findViewById(R.id.groseria2);
+        groseria3 = (TextView) findViewById(R.id.groseri3);
+        groseria4 = (TextView) findViewById(R.id.groseria4);
 
 
         //cuenta atras

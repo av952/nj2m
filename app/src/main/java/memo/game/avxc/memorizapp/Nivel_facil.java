@@ -21,6 +21,10 @@ import android.widget.TextView;
 
 import java.util.Random;
 
+//-publicidad
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdView;
+
 import static memo.game.avxc.memorizapp.R.id.tiempo;
 
 public class Nivel_facil extends AppCompatActivity implements View.OnDragListener,View.OnLongClickListener,
@@ -177,6 +181,11 @@ public class Nivel_facil extends AppCompatActivity implements View.OnDragListene
         //handler = new Handler();
 
         groseria =(TextView)findViewById(R.id.groseria);
+
+        //publicidad
+        AdView mAdView = (AdView) findViewById(R.id.adView2);
+        AdRequest adRequest = new AdRequest.Builder().build();
+        mAdView.loadAd(adRequest);
 
     }
 

@@ -21,6 +21,9 @@ import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdView;
+
 import java.util.Random;
 
 import static memo.game.avxc.memorizapp.R.id.tiempo;
@@ -200,6 +203,11 @@ public class Nivel_medio extends AppCompatActivity implements View.OnDragListene
 
         //cuenta atras
         tvcuentra_atras = (TextView)findViewById(R.id.tv_cuenta_atras);
+
+        //publicidad
+        AdView mAdView = (AdView) findViewById(R.id.adView1);
+        AdRequest adRequest = new AdRequest.Builder().build();
+        mAdView.loadAd(adRequest);
 
 
     }
