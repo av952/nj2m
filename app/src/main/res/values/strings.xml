@@ -14,4 +14,8 @@
 
 
     <string name="guarda_puntaje">guardapuntaje</string>
+
+
+    <!--textos-->
+    <string name="Puntuacion_maxima">Tu nuevo record es:</string>
 </resources>

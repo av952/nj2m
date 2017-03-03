@@ -14,8 +14,8 @@ public class Finjuego extends AppCompatActivity implements View.OnClickListener{
     TextView puntaje,puntaje_max;
 
     SharedPreferences sharedPreferences;
-    private String guarda_puntaje;
-    private int converte_puntaje;
+    private String guarda_puntaje,res;
+    private int converte_puntaje,puntaje_actual;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,7 +42,9 @@ public class Finjuego extends AppCompatActivity implements View.OnClickListener{
 
         Bundle datos  = this.getIntent().getExtras();
 
-        String res  =datos.getString("puntaje");
+        /*res me convierte el puntaje en un srtring
+        * para luego colocarlo en pantalla*/
+        res  = datos.getString("puntaje");
         puntaje.setText(res);
 
     }
@@ -62,12 +64,25 @@ public class Finjuego extends AppCompatActivity implements View.OnClickListener{
     * graba los datos del valor maximo*/
     public void gravador(){
 
-        guarda_puntaje=  puntaje.getText().toString();
+        puntaje_actual = Integer.valueOf(res);
+
+        guarda_puntaje= sharedPreferences.getString(getString(R.string.guarda_puntaje),"0");
         converte_puntaje = Integer.valueOf(guarda_puntaje);
 
-        SharedPreferences.Editor  editor  = sharedPreferences.edit();
-        editor.putString(getString(R.string.guarda_puntaje),guarda_puntaje);
-        editor.commit();
+
+        if (puntaje_actual>converte_puntaje){
+            SharedPreferences.Editor  editor  = sharedPreferences.edit();
+            editor.putString(getString(R.string.guarda_puntaje),res);
+            editor.commit();
+            guarda_puntaje= sharedPreferences.getString(getString(R.string.guarda_puntaje),"0");
+
+            /*coloca el texto obtenido en pantalla*/
+            puntaje_max.setText(getText(R.string.Puntuacion_maxima)+" "+guarda_puntaje);
+
+        }else {
+            puntaje_max.setText("no tienes puntuacion maxima");
+        }
+
 
     }
 
