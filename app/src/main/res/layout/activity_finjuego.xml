@@ -5,14 +5,37 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:background="@drawable/mochagrunge"
     tools:context="memo.game.avxc.memorizapp.Finjuego">
 
     <TextView
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Puntuacion"
-        android:textSize="40dp"
+        android:textSize="@dimen/tam_puntua_final"
+        android:textAlignment="center"
         android:id="@+id/puntuacion"
+        android:layout_marginTop="@dimen/mar_top_item"
         />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal"
+        android:gravity="center"
+        android:layout_margin="10dp"
+        >
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="puntuacion maxima"
+        android:textSize="@dimen/puntua_max_min"
+        android:id="@+id/txt_puntuamax"
+        android:layout_weight="1"
+        android:textAlignment="center"
+        />
+
+    </LinearLayout>
 
 </LinearLayout>

@@ -61,7 +61,8 @@
                     android:id="@+id/imgv_item"
                     android:layout_width="@dimen/tam_item"
                     android:layout_height="@dimen/tam_item"
-                    android:layout_marginRight="10dp"
+                    android:layout_marginRight="@dimen/mar_top_item"
+                    android:layout_marginTop="@dimen/mar_top_item"
                     android:src="@drawable/item1" />
 
             </LinearLayout>
@@ -122,7 +123,8 @@
                     android:layout_width="@dimen/tam_item"
                     android:layout_height="@dimen/tam_item"
                     android:layout_weight="0"
-                    android:layout_marginRight="10dp"
+                    android:layout_marginRight="@dimen/mar_top_item"
+                    android:layout_marginTop="@dimen/mar_top_item"
                     android:src="@drawable/item1" />
 
 

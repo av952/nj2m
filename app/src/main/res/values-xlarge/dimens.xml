@@ -3,7 +3,13 @@
 
     <dimen name="ancho">200dp</dimen>
     <dimen name="alto">200dp</dimen>
-    <dimen name="tam_groseria">40dp</dimen>
+    <dimen name="tam_groseria">40sp</dimen>
     <dimen name="tam_item">80dp</dimen>
+    <dimen name="mar_top_item">10dp</dimen>
+    <dimen name="tam_puntua_final">80sp</dimen>
+
+    <dimen name="puntua_max_min">40sp</dimen>
+
+
 
 </resources>
