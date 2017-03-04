@@ -14,4 +14,10 @@
     <color name="texto_primario">#212121</color>
     <color name="acento">#CDDC39</color>
 
+    <!--Botones-->
+
+    <color name="boton_easy">#8ACE16</color>
+    <color name="boton_medium">#FCC417</color>
+    <color name="boton_dificil">#FE5447</color>
+
 </resources>
