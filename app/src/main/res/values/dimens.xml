@@ -9,8 +9,16 @@
     <dimen name="tam_item">40dp</dimen>
     <dimen name="mar_top_item">10dp</dimen>
     <dimen name="tam_puntua_final">40sp</dimen>
+    <dimen name="puntua_max_min">30sp</dimen>
+
     <dimen name="tam_botones">85dp</dimen>
     <dimen name="tam_botones_height">100dp</dimen>
+
+    <dimen name="tam_btn_play_width">121dp</dimen>
+    <dimen name="tam_btn_play_height">100dp</dimen>
+
+    <dimen name="tam_librero_medio">20dp</dimen>
+    <dimen name="tam_librero_arriba">80dp</dimen>
 
 
 

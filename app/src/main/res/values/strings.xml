@@ -18,4 +18,7 @@
 
     <!--textos-->
     <string name="Puntuacion_maxima">Tu nuevo record es:</string>
+    <string name="facil">facil</string>
+    <string name="medio">medio</string>
+    <string name="dificil">dificil</string>
 </resources>

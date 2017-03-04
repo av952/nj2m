@@ -10,6 +10,17 @@
 
     <dimen name="puntua_max_min">40sp</dimen>
 
+    <dimen name="tam_botones">170dp</dimen>
+    <dimen name="tam_botones_height">200dp</dimen>
+
+    <dimen name="tam_btn_play_width">242dp</dimen>
+    <dimen name="tam_btn_play_height">200dp</dimen>
+
+    <dimen name="tam_librero_medio">40dp</dimen>
+    <dimen name="tam_librero_arriba">160dp</dimen>
+
+
+
 
 
 </resources>
