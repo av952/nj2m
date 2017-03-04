@@ -95,6 +95,7 @@ public class Nivel_facil extends AppCompatActivity implements View.OnDragListene
     private int seleccion = 0;
 
 
+
 //**********************************************************************************************************************************
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -182,12 +183,14 @@ public class Nivel_facil extends AppCompatActivity implements View.OnDragListene
 
         groseria =(TextView)findViewById(R.id.groseria);
 
+
         //publicidad
         AdView mAdView = (AdView) findViewById(R.id.adView2);
         AdRequest adRequest = new AdRequest.Builder().build();
         mAdView.loadAd(adRequest);
 
     }
+
 
     public void libroaleatorio(){
        /* r = random.nextInt(almacen.listalibros.length);
