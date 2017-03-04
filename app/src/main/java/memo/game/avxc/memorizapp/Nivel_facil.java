@@ -24,7 +24,9 @@ import java.util.Random;
 //-publicidad
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
+import com.google.android.gms.ads.InterstitialAd;
 
+import static android.os.Build.VERSION_CODES.M;
 import static memo.game.avxc.memorizapp.R.id.tiempo;
 
 public class Nivel_facil extends AppCompatActivity implements View.OnDragListener,View.OnLongClickListener,
@@ -94,6 +96,7 @@ public class Nivel_facil extends AppCompatActivity implements View.OnDragListene
 
     private int seleccion = 0;
 
+    private InterstitialAd interstitialAd;
 
 
 //**********************************************************************************************************************************
@@ -189,7 +192,15 @@ public class Nivel_facil extends AppCompatActivity implements View.OnDragListene
         AdRequest adRequest = new AdRequest.Builder().build();
         mAdView.loadAd(adRequest);
 
+
+        //interticial
+       /* interstitialAd = new InterstitialAd(this);
+        interstitialAd.setAdUnitId("ca-app-pub-7600541404292053/7477090920");
+        interstitialAd.loadAd(adRequest);*/
+
     }
+
+    //fin del oncreate
 
 
     public void libroaleatorio(){
@@ -558,6 +569,10 @@ public class Nivel_facil extends AppCompatActivity implements View.OnDragListene
     }
 
     public void finjuego(){
+
+       /* if (interstitialAd.isLoaded()) {
+            interstitialAd.show();
+        }*/
 
         Intent intent = new Intent(this, Finjuego.class);
         intent.putExtra("puntaje",puntaje.getText());
