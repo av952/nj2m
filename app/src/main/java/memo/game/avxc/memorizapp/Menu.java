@@ -50,7 +50,7 @@ public class Menu extends AppCompatActivity implements View.OnClickListener{
 
         case R.id.btn_facil:
             btnjugar.startAnimation(animation);
-            btnjugar.setText("jugar facil");
+            btnjugar.setText(R.string.jugar_facil);
             btnjugar.setVisibility(View.VISIBLE);
 
             boton=1;
@@ -60,7 +60,7 @@ public class Menu extends AppCompatActivity implements View.OnClickListener{
             break;
         case R.id.btn_difiil:
             btnjugar.startAnimation(animation);
-            btnjugar.setText("jugar dificil");
+            btnjugar.setText(R.string.jugar_difícil);
             btnjugar.setVisibility(View.VISIBLE);
             boton=3;
             btndificil.setAlpha(1);
@@ -69,7 +69,7 @@ public class Menu extends AppCompatActivity implements View.OnClickListener{
             break;
         case R.id.btn_medio:
             btnjugar.startAnimation(animation);
-            btnjugar.setText("jugar medio");
+            btnjugar.setText(R.string.jugarm_medio);
             btnjugar.setVisibility(View.VISIBLE);
             boton=2;
             btnmedio.setAlpha(1);

@@ -2,6 +2,8 @@ package memo.game.avxc.memorizapp;
 
 import android.content.ClipData;
 import android.content.Intent;
+import android.media.AudioManager;
+import android.media.SoundPool;
 import android.os.AsyncTask;
 import android.os.CountDownTimer;
 import android.os.Handler;
@@ -108,6 +110,12 @@ public class Nivel_medio extends AppCompatActivity implements View.OnDragListene
     private TextView tvcuentra_atras;
     private int cuenta_atras=6;
 
+    //SONIDO
+    private SoundPool sonido_tiempo;
+    private int flujodemusica;
+
+    private CountDownTimer countDownTimer;
+
     ////////////-------------------------------------------------------------------------------------------------
 
 
@@ -208,6 +216,10 @@ public class Nivel_medio extends AppCompatActivity implements View.OnDragListene
         AdView mAdView = (AdView) findViewById(R.id.adView1);
         AdRequest adRequest = new AdRequest.Builder().build();
         mAdView.loadAd(adRequest);
+
+        sonido_tiempo = new SoundPool(0, AudioManager.STREAM_MUSIC,0);
+        this.setVolumeControlStream(AudioManager.STREAM_MUSIC);
+        flujodemusica = sonido_tiempo.load(this,R.raw.sonido_tiempo,1);
 
 
     }
@@ -643,6 +655,7 @@ public class Nivel_medio extends AppCompatActivity implements View.OnDragListene
         hilo_2.interrupt();
         Intent intent = new Intent(this, Finjuego.class);
         intent.putExtra("puntaje", puntaje.getText());
+        intent.putExtra("nivel","2");
         startActivity(intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP |Intent.FLAG_ACTIVITY_SINGLE_TOP));
 
         ver = false;
@@ -796,12 +809,13 @@ public class Nivel_medio extends AppCompatActivity implements View.OnDragListene
     }
 
     public void contador(){
-        new CountDownTimer(6000,1000){
+       countDownTimer = new CountDownTimer(6000,1000){
 
             @Override
             public void onTick(long millisUntilFinished) {
                 cuenta_atras--;
                 tvcuentra_atras.setText(""+cuenta_atras);
+                sonido_tiempo.play(flujodemusica,1,1,0,0,1);
 
             }
 
@@ -815,6 +829,7 @@ public class Nivel_medio extends AppCompatActivity implements View.OnDragListene
     @Override
     public void onBackPressed(){
         seleccion=1;
+        countDownTimer.cancel();
         finish();
 
     }

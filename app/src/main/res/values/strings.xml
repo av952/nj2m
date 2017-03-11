@@ -18,7 +18,14 @@
 
     <!--textos-->
     <string name="Puntuacion_maxima">Tu nuevo record es:</string>
+    <string name="Mantiene_punt_max">Tu record es:</string>
+    <string name="Puntos">Puntos</string>
+
     <string name="facil">facil</string>
     <string name="medio">medio</string>
     <string name="dificil">dificil</string>
+
+    <string name="jugar_facil">jugar fácil</string>
+    <string name="jugarm_medio">jugar medio</string>
+    <string name="jugar_difícil">jugar difícil</string>
 </resources>

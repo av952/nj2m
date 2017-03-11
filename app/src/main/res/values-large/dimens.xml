@@ -20,6 +20,11 @@
     <dimen name="tam_librero_medio">30dp</dimen>
     <dimen name="tam_librero_arriba">120dp</dimen>
 
+    <dimen name="margenes_puntuacion">60dp</dimen>
+
+    <dimen name="tam_estrella">45dp</dimen>
+    <dimen name="tam_text_extrella">45dp</dimen>
+
 
 
 

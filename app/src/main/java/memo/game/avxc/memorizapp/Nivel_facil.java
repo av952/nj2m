@@ -2,6 +2,8 @@ package memo.game.avxc.memorizapp;
 
 import android.content.ClipData;
 import android.content.Intent;
+import android.media.AudioManager;
+import android.media.SoundPool;
 import android.os.CountDownTimer;
 import android.os.Handler;
 import android.os.SystemClock;
@@ -60,6 +62,10 @@ public class Nivel_facil extends AppCompatActivity implements View.OnDragListene
     //ANIMACION
     Animation animation,animation2;
 
+    //SONIDO
+    private SoundPool sonido_tiempo;
+    private int flujodemusica;
+
 
     //futantes para ontouch
      float pinicialx,pinicialy; //posicion inicial xy de la imagen que se toca
@@ -97,6 +103,8 @@ public class Nivel_facil extends AppCompatActivity implements View.OnDragListene
     private int seleccion = 0;
 
     private InterstitialAd interstitialAd;
+
+    private CountDownTimer countDownTimer;
 
 
 //**********************************************************************************************************************************
@@ -197,6 +205,11 @@ public class Nivel_facil extends AppCompatActivity implements View.OnDragListene
        /* interstitialAd = new InterstitialAd(this);
         interstitialAd.setAdUnitId("ca-app-pub-7600541404292053/7477090920");
         interstitialAd.loadAd(adRequest);*/
+
+
+        sonido_tiempo = new SoundPool(0, AudioManager.STREAM_MUSIC,0);
+        this.setVolumeControlStream(AudioManager.STREAM_MUSIC);
+        flujodemusica = sonido_tiempo.load(this,R.raw.sonido_tiempo,1);
 
     }
 
@@ -576,6 +589,7 @@ public class Nivel_facil extends AppCompatActivity implements View.OnDragListene
 
         Intent intent = new Intent(this, Finjuego.class);
         intent.putExtra("puntaje",puntaje.getText());
+        intent.putExtra("nivel","1");
         startActivity(intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP |Intent.FLAG_ACTIVITY_SINGLE_TOP));
         seleccion=1;
         finish();
@@ -621,12 +635,13 @@ public class Nivel_facil extends AppCompatActivity implements View.OnDragListene
     //para la cuenta regresiva
     public void contador(){
 
-        new CountDownTimer(6000,1000){
+      countDownTimer =  new CountDownTimer(6000,1000){
 
             @Override
             public void onTick(long millisUntilFinished) {
                 cuenta_atras--;
                 txtclikeable.setText(""+cuenta_atras);
+                sonido_tiempo.play(flujodemusica,1,1,0,0,1);
 
             }
 
@@ -648,9 +663,8 @@ public class Nivel_facil extends AppCompatActivity implements View.OnDragListene
     @Override
     public void onBackPressed(){
         seleccion=1;
+        countDownTimer.cancel();
         finish();
 
     }
-
-
 }

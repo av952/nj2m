@@ -2,6 +2,8 @@ package memo.game.avxc.memorizapp;
 
 import android.content.ClipData;
 import android.content.Intent;
+import android.media.AudioManager;
+import android.media.SoundPool;
 import android.os.AsyncTask;
 import android.os.CountDownTimer;
 import android.os.Handler;
@@ -24,6 +26,7 @@ import android.widget.TextView;
 import java.util.Random;
 
 import static memo.game.avxc.memorizapp.R.id.tiempo;
+import static memo.game.avxc.memorizapp.R.raw.sonido_tiempo;
 
 public class Nivel_dificil extends AppCompatActivity implements View.OnDragListener, View.OnLongClickListener,
         View.OnClickListener, View.OnTouchListener, Comunicador {
@@ -57,6 +60,10 @@ public class Nivel_dificil extends AppCompatActivity implements View.OnDragListe
 
     //ANIMACION
     Animation animation, animation2;
+
+    //SONIDO
+    private SoundPool sonido_tiempo;
+    private int flujodemusica;
 
 
     //futantes para ontouch
@@ -107,6 +114,9 @@ public class Nivel_dificil extends AppCompatActivity implements View.OnDragListe
     //cuentaatras
     private TextView tvcuentra_atras;
     private int cuenta_atras=6;
+
+
+    private  CountDownTimer countDownTimer;
 
     ////////////-------------------------------------------------------------------------------------------------
 
@@ -222,6 +232,10 @@ public class Nivel_dificil extends AppCompatActivity implements View.OnDragListe
 
         //cuenta atras
         tvcuentra_atras = (TextView)findViewById(R.id.tv_cuenta_atras);
+
+        sonido_tiempo = new SoundPool(0, AudioManager.STREAM_MUSIC,0);
+        this.setVolumeControlStream(AudioManager.STREAM_MUSIC);
+        flujodemusica = sonido_tiempo.load(this,R.raw.sonido_tiempo,1);
 
 
     }
@@ -746,6 +760,7 @@ public class Nivel_dificil extends AppCompatActivity implements View.OnDragListe
 
         Intent intent = new Intent(this, Finjuego.class);
         intent.putExtra("puntaje", puntaje.getText());
+        intent.putExtra("nivel","3");
 
         startActivity(intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP |Intent.FLAG_ACTIVITY_SINGLE_TOP));
         ver = false;
@@ -981,12 +996,13 @@ public class Nivel_dificil extends AppCompatActivity implements View.OnDragListe
     }
 
     public void contador(){
-        new CountDownTimer(6000,1000){
+       countDownTimer = new CountDownTimer(6000,1000){
 
             @Override
             public void onTick(long millisUntilFinished) {
                 cuenta_atras--;
                 tvcuentra_atras.setText(""+cuenta_atras);
+                sonido_tiempo.play(flujodemusica,1,1,0,0,1);
 
             }
 
@@ -1000,6 +1016,7 @@ public class Nivel_dificil extends AppCompatActivity implements View.OnDragListe
     @Override
     public void onBackPressed(){
         seleccion=1;
+        countDownTimer.cancel();
         finish();
 
     }

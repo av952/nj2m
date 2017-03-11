@@ -8,34 +8,131 @@
     android:background="@drawable/mochagrunge"
     tools:context="memo.game.avxc.memorizapp.Finjuego">
 
-    <TextView
+    <Space
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Puntuacion"
-        android:textSize="@dimen/tam_puntua_final"
-        android:textAlignment="center"
-        android:id="@+id/puntuacion"
-        android:layout_marginTop="@dimen/mar_top_item"
-        />
+        android:layout_weight="0.1"/>
+
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/tam_librero_arriba"
+        android:src="@drawable/librero02"
+        android:layout_marginBottom="50dp"/>
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:gravity="center"
-        android:layout_margin="10dp"
+        android:layout_marginTop="@dimen/margenes_puntuacion"
+        android:layout_marginLeft="@dimen/margenes_puntuacion"
+        android:layout_marginRight="@dimen/margenes_puntuacion"
         >
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="puntuacion maxima"
-        android:textSize="@dimen/puntua_max_min"
-        android:id="@+id/txt_puntuamax"
-        android:layout_weight="1"
-        android:textAlignment="center"
-        />
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/trofeo" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="puntuacion maxima"
+            android:textSize="@dimen/puntua_max_min"
+            android:id="@+id/txt_puntuamax"
+            android:layout_weight="1"
+            android:textAlignment="center"
+            />
+
+
 
     </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        >
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/tam_librero_medio"
+            android:src="@drawable/librero01"
+            />
+
+    </LinearLayout>
+
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center"
+        android:layout_marginTop="@dimen/margenes_puntuacion"
+        android:layout_marginLeft="@dimen/margenes_puntuacion"
+        android:layout_marginRight="@dimen/margenes_puntuacion"
+        >
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/estrella"
+            />
+
+        <TextView
+            android:id="@+id/puntuacion"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/mar_top_item"
+            android:text="Puntua"
+            android:textAlignment="center"
+            android:textSize="@dimen/puntua_max_min" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        >
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/tam_librero_medio"
+            android:src="@drawable/librero01"
+            />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="40dp"
+            android:layout_marginTop="40dp"
+            android:src="@drawable/menu"
+            android:id="@+id/menu"/>
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="40dp"
+            android:layout_marginTop="40dp"
+            android:layout_marginLeft="100dp"
+            android:src="@drawable/back"
+            android:id="@+id/back"/>
+
+    </LinearLayout>
+
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="0.1"/>
+
 
 </LinearLayout>
