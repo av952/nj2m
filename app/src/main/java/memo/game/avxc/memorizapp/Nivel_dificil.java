@@ -59,7 +59,7 @@ public class Nivel_dificil extends AppCompatActivity implements View.OnDragListe
 
 
     //ANIMACION
-    Animation animation, animation2;
+    Animation animation, animation2, left, right, middle;
 
     //SONIDO
     private SoundPool sonido_tiempo;
@@ -133,6 +133,11 @@ public class Nivel_dificil extends AppCompatActivity implements View.OnDragListe
         //Animacion
         animation = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.itemanimado);
         animation2 = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.animaseleccion);
+        left = AnimationUtils.loadAnimation(getApplicationContext(),R.anim.left);
+        middle = AnimationUtils.loadAnimation(getApplicationContext(),R.anim.middel);
+        right = AnimationUtils.loadAnimation(getApplicationContext(),R.anim.right);
+
+
 
 
         //CREANDO LAS IMAGENES
@@ -272,6 +277,7 @@ public class Nivel_dificil extends AppCompatActivity implements View.OnDragListe
         Log.i("d", "asignando libros");
         imglibro1.setImageResource(almacen.listalibros[randomizalibro[0]]);
         imglibro1.clearAnimation();
+        //imglibro1.startAnimation(left);
         imglibro2.setImageResource(almacen.listalibros[randomizalibro[1]]);
         imglibro2.clearAnimation();
         imglibro3.setImageResource(almacen.listalibros[randomizalibro[2]]);

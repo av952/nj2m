@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!--textos-->
+    <string name="Puntuacion_maxima">Your new record is:</string>
+    <string name="Mantiene_punt_max">Your record is:</string>
+    <string name="Puntos">Points</string>
+
+    <string name="facil">easy</string>
+    <string name="medio">medium</string>
+    <string name="dificil">hard</string>
+
+    <string name="jugar_facil">play easy</string>
+    <string name="jugarm_medio">play medium</string>
+    <string name="jugar_difícil">play hard</string>
+</resources>

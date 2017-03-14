@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.media.AudioManager;
+import android.media.MediaPlayer;
 import android.media.SoundPool;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -33,6 +34,8 @@ public class Finjuego extends AppCompatActivity implements View.OnClickListener 
 
     private SoundPool new_record,loose;
     private int flujodemusica;
+
+    private MediaPlayer nuevo_record, perdio;
 
     InterstitialAd interstitialAd;
 
@@ -124,7 +127,7 @@ public class Finjuego extends AppCompatActivity implements View.OnClickListener 
                         finish();
                         break;
                     case "3":
-                        Intent intent3 = new Intent(this,Nivel_medio.class);
+                        Intent intent3 = new Intent(this,Nivel_dificil.class);
                         startActivity(intent3);
                         finish();
                         break;
@@ -152,13 +155,20 @@ public class Finjuego extends AppCompatActivity implements View.OnClickListener 
             /*coloca el texto obtenido en pantalla*/
             puntaje_max.setText(getText(R.string.Puntuacion_maxima) + " " + guarda_puntaje);
 
-            new_record.play(flujodemusica,1,1,0,0,1);
+            // new_record.play(flujodemusica,1,1,0,0,1);
+
+            nuevo_record = MediaPlayer.create(this, R.raw.new_record);
+            nuevo_record.setLooping(false);
+            nuevo_record.start();
 
         } else {
             guarda_puntaje = sharedPreferences.getString(getString(R.string.guarda_puntaje), "0");
             puntaje_max.setText(getText(R.string.Mantiene_punt_max)+" "+guarda_puntaje);
 
-            new_record.play(flujodemusica,1,1,0,0,1);
+            //new_record.play(flujodemusica,1,1,0,0,1);
+            perdio = MediaPlayer.create(this,R.raw.lose_game);
+            perdio.setLooping(false);
+            perdio.start();
         }
 
     }
