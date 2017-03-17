@@ -10,7 +10,8 @@
 
     <string name="groseria">!@##!$%!*#</string>
     <string name="tomatetutiempo">5</string>
-    <string name="baner_unit_id">ca-app-pub-3940256099942544/6300978111</string>
+    <string name="baner_unit_id">ca-app-pub-7600541404292053/2229842526</string>
+    <string name="intersticial_add">ca-app-pub-7600541404292053/9613508522</string>
 
 
     <string name="guarda_puntaje">guardapuntaje</string>
@@ -28,4 +29,7 @@
     <string name="jugar_facil">jugar fácil</string>
     <string name="jugarm_medio">jugar medio</string>
     <string name="jugar_difícil">jugar difícil</string>
+
+
+    <string name="creditos">Game designed and developed by A.V.XC\n\nThe images used in the game was designed by Freepik\n</string>
 </resources>

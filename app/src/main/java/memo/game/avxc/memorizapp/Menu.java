@@ -10,6 +10,7 @@ import android.view.WindowManager;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.Switch;
 import android.widget.Toast;
 
@@ -24,6 +25,7 @@ public class Menu extends AppCompatActivity implements View.OnClickListener{
     Animation animation;
     private SoundPool  click;
     private int flujodemusica;
+    private ImageView creditos;
 
 
     @Override
@@ -43,6 +45,10 @@ public class Menu extends AppCompatActivity implements View.OnClickListener{
         btndificil.setOnClickListener(this);
         btnmedio.setOnClickListener(this);
         btnfacil.setOnClickListener(this);
+
+
+        creditos = (ImageView)findViewById(R.id.creditos);
+        creditos.setOnClickListener(this);
 
 
         animation = AnimationUtils.loadAnimation(getApplicationContext(),R.anim.pruebaanima);
@@ -110,6 +116,10 @@ public class Menu extends AppCompatActivity implements View.OnClickListener{
                 Toast.makeText(this,"No haz seleccionado un nivel de dicicultad",Toast.LENGTH_SHORT).show();
             }
 
+            break;
+        case R.id.creditos:
+            Intent cred = new Intent(this,Creditos.class);
+            startActivity(cred);
             break;
     }
 

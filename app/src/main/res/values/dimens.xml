@@ -25,6 +25,9 @@
     <dimen name="tam_estrella">30dp</dimen>
     <dimen name="tam_text_extrella">30dp</dimen>
 
+    <dimen name="creditos">50dp</dimen>
+
+    <dimen name="creditos_texto">20sp</dimen>
 
 
 </resources>

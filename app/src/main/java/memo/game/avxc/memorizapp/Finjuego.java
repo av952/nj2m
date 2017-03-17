@@ -56,7 +56,7 @@ public class Finjuego extends AppCompatActivity implements View.OnClickListener 
         sharedPreferences = getSharedPreferences(getString(R.string.guarda_puntaje), Context.MODE_PRIVATE);
 
         interstitialAd = new InterstitialAd(this);
-        interstitialAd.setAdUnitId("ca-app-pub-3940256099942544/1033173712");
+        interstitialAd.setAdUnitId(getString(R.string.intersticial_add));
 
         back=(ImageView)findViewById(R.id.back);
         menu=(ImageView)findViewById(R.id.menu);

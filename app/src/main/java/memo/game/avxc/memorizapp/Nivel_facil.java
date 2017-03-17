@@ -22,6 +22,7 @@ import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
+import java.util.Iterator;
 import java.util.LinkedHashMap;
 import java.util.Map;
 import java.util.Random;
@@ -119,6 +120,7 @@ public class Nivel_facil extends AppCompatActivity implements View.OnDragListene
 
     private Tutors  tutores;
     private Map<String, View> tutorials;
+    private Iterator<Map.Entry<String, View>> iterator;
 
 
 //**********************************************************************************************************************************
@@ -236,13 +238,13 @@ public class Nivel_facil extends AppCompatActivity implements View.OnDragListene
 
         //instrucciones
 
-        initTutorials();
+       // initTutorials();
     }
 
     //fin del oncreate
 
 
-    public void tutor(){
+    public void tutor() {
         tutores = new TutorsBuilder()
                 .textColorRes(android.R.color.white)
                 .shadowColorRes(R.color.shadow)
@@ -252,19 +254,6 @@ public class Nivel_facil extends AppCompatActivity implements View.OnDragListene
                 .lineWidthRes(R.dimen.lineWidth)
                 .cancelable(false)
                 .build();
-
-        ValueAnimator animator = ValueAnimator.ofFloat(0f,1f);
-        animator.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
-            @Override
-            public void onAnimationUpdate(ValueAnimator animation) {
-
-            }
-        });
-
-        animator.setDuration(500);
-        animator.setRepeatMode(ValueAnimator.REVERSE);
-        animator.setRepeatCount(-1);
-        animator.start();
     }
 
     private void initTutorials() {
@@ -276,15 +265,16 @@ public class Nivel_facil extends AppCompatActivity implements View.OnDragListene
     }
 
     public void preparate(){
+        asignacion();
         handler.postDelayed(new Runnable() {
             @Override
             public void run() {
 
-                asignacion();
+
                 contador();
-                tutor();
+
             }
-        },500);
+        },0);
     }
 
 

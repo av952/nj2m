@@ -23,6 +23,11 @@
     <dimen name="tam_estrella">60dp</dimen>
     <dimen name="tam_text_extrella">60dp</dimen>
 
+    <dimen name="creditos">100dp</dimen>
+    <dimen name="creditos_texto">40sp</dimen>
+
+
+
 
 
 

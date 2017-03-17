@@ -42,6 +42,7 @@
         <activity
             android:name=".Finjuego"
             android:screenOrientation="portrait" />
+        <activity android:name=".Creditos"></activity>
     </application>
 
 </manifest>
