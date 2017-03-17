@@ -1,6 +1,8 @@
 package memo.game.avxc.memorizapp;
 
 import android.content.Intent;
+import android.media.AudioManager;
+import android.media.SoundPool;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -11,6 +13,8 @@ import android.widget.Button;
 import android.widget.Switch;
 import android.widget.Toast;
 
+import static memo.game.avxc.memorizapp.R.raw.sonido_tiempo;
+
 public class Menu extends AppCompatActivity implements View.OnClickListener{
 
     private Button btnjugar,btnfacil,btndificil,btnmedio;
@@ -18,6 +22,8 @@ public class Menu extends AppCompatActivity implements View.OnClickListener{
     int boton;
 
     Animation animation;
+    private SoundPool  click;
+    private int flujodemusica;
 
 
     @Override
@@ -41,6 +47,11 @@ public class Menu extends AppCompatActivity implements View.OnClickListener{
 
         animation = AnimationUtils.loadAnimation(getApplicationContext(),R.anim.pruebaanima);
 
+
+        click = new SoundPool(0, AudioManager.STREAM_MUSIC,0);
+        this.setVolumeControlStream(AudioManager.STREAM_MUSIC);
+        flujodemusica = click.load(this,R.raw.click,1);
+
     }
 
     @Override
@@ -49,6 +60,7 @@ public class Menu extends AppCompatActivity implements View.OnClickListener{
     switch (v.getId()){
 
         case R.id.btn_facil:
+            click.play(flujodemusica,1,1,0,0,1);
             btnjugar.startAnimation(animation);
             btnjugar.setText(R.string.jugar_facil);
             btnjugar.setVisibility(View.VISIBLE);
@@ -59,6 +71,8 @@ public class Menu extends AppCompatActivity implements View.OnClickListener{
             btndificil.setAlpha(0.5f);
             break;
         case R.id.btn_difiil:
+            click.play(flujodemusica,1,1,0,0,1);
+
             btnjugar.startAnimation(animation);
             btnjugar.setText(R.string.jugar_difícil);
             btnjugar.setVisibility(View.VISIBLE);
@@ -68,6 +82,8 @@ public class Menu extends AppCompatActivity implements View.OnClickListener{
             btnmedio.setAlpha(0.5f);
             break;
         case R.id.btn_medio:
+            click.play(flujodemusica,1,1,0,0,1);
+
             btnjugar.startAnimation(animation);
             btnjugar.setText(R.string.jugarm_medio);
             btnjugar.setVisibility(View.VISIBLE);
@@ -77,6 +93,7 @@ public class Menu extends AppCompatActivity implements View.OnClickListener{
             btndificil.setAlpha(0.5f);
             break;
         case R.id.btn_jugar:
+            click.play(flujodemusica,1,1,0,0,1);
             if(boton==1){
                 Intent intent = new Intent(this,Nivel_facil.class);
                 startActivity(intent);

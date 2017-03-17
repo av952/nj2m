@@ -18,7 +18,8 @@
         android:orientation="horizontal">
         <include
             android:id="@+id/estrella_puntos"
-            layout="@layout/estrella_puntos">
+            layout="@layout/estrella_puntos"
+            android:visibility="visible">
         </include>
 
     </LinearLayout>
@@ -166,7 +167,8 @@
         android:layout_marginBottom="10dp"
         android:layout_marginTop="10dp"
         android:orientation="horizontal"
-        android:weightSum="3">
+        android:weightSum="3"
+        android:visibility="visible">
 
         <ImageView
             android:id="@+id/imgv_libro4"

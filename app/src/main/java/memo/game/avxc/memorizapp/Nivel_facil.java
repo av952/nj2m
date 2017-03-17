@@ -1,5 +1,6 @@
 package memo.game.avxc.memorizapp;
 
+import android.animation.ValueAnimator;
 import android.content.ClipData;
 import android.content.Intent;
 import android.media.AudioManager;
@@ -21,15 +22,23 @@ import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
+import java.util.LinkedHashMap;
+import java.util.Map;
 import java.util.Random;
 
 //-publicidad
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
 import com.google.android.gms.ads.InterstitialAd;
+import com.popalay.tutors.Tutors;
+import com.popalay.tutors.TutorsBuilder;
 
+import static android.icu.lang.UCharacter.GraphemeClusterBreak.V;
 import static android.os.Build.VERSION_CODES.M;
+import static memo.game.avxc.memorizapp.R.id.imgv_libro1;
+import static memo.game.avxc.memorizapp.R.id.imgv_per1;
 import static memo.game.avxc.memorizapp.R.id.tiempo;
+import static memo.game.avxc.memorizapp.R.id.txt_clikeable;
 
 public class Nivel_facil extends AppCompatActivity implements View.OnDragListener,View.OnLongClickListener,
         View.OnClickListener,View.OnTouchListener, Comunicador{
@@ -106,6 +115,11 @@ public class Nivel_facil extends AppCompatActivity implements View.OnDragListene
 
     private CountDownTimer countDownTimer;
 
+    private float tam_clikeable;
+
+    private Tutors  tutores;
+    private Map<String, View> tutorials;
+
 
 //**********************************************************************************************************************************
     @Override
@@ -174,8 +188,9 @@ public class Nivel_facil extends AppCompatActivity implements View.OnDragListene
         //llamandometodo
 
         //itemaleatorio(1,1);
-        asignacion();
-        contador();
+        //************************************************
+        //asignacion();
+        //contador();
 
         //cronometro2
         cronometro = (TextView)findViewById(tiempo);
@@ -211,9 +226,66 @@ public class Nivel_facil extends AppCompatActivity implements View.OnDragListene
         this.setVolumeControlStream(AudioManager.STREAM_MUSIC);
         flujodemusica = sonido_tiempo.load(this,R.raw.sonido_tiempo,1);
 
+
+        //desapárece objetos
+        imgper1.setVisibility(View.GONE);
+        imgitem1.setVisibility(View.GONE);
+        libroaleatorio();
+        preparate();
+
+
+        //instrucciones
+
+        initTutorials();
     }
 
     //fin del oncreate
+
+
+    public void tutor(){
+        tutores = new TutorsBuilder()
+                .textColorRes(android.R.color.white)
+                .shadowColorRes(R.color.shadow)
+                .textSizeRes(R.dimen.textNormal)
+                .completeIconRes(R.drawable.ic_cross_24_white)
+                .spacingRes(R.dimen.spacingNormal)
+                .lineWidthRes(R.dimen.lineWidth)
+                .cancelable(false)
+                .build();
+
+        ValueAnimator animator = ValueAnimator.ofFloat(0f,1f);
+        animator.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
+            @Override
+            public void onAnimationUpdate(ValueAnimator animation) {
+
+            }
+        });
+
+        animator.setDuration(500);
+        animator.setRepeatMode(ValueAnimator.REVERSE);
+        animator.setRepeatCount(-1);
+        animator.start();
+    }
+
+    private void initTutorials() {
+        tutorials = new LinkedHashMap<>();
+        tutorials.put("Libro", imglibro1);
+        tutorials.put("Item", imgitem1);
+        tutorials.put("Personaje", imgper1);
+
+    }
+
+    public void preparate(){
+        handler.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+
+                asignacion();
+                contador();
+                tutor();
+            }
+        },500);
+    }
 
 
     public void libroaleatorio(){
@@ -313,6 +385,8 @@ public class Nivel_facil extends AppCompatActivity implements View.OnDragListene
 
     public void asignacion(){
 
+
+
         int i =0;
         randomiza = new int[almacen.listaitem.length];
 
@@ -340,8 +414,7 @@ public class Nivel_facil extends AppCompatActivity implements View.OnDragListene
         imglibro6.setImageResource(almacen.listaitem[randomiza[5]]);
         imglibro6.setAnimation(animation2);
 
-        imgper1.setVisibility(View.GONE);
-        imgitem1.setVisibility(View.GONE);
+
 
        handler.postDelayed(new Runnable() {
             @Override
@@ -484,9 +557,10 @@ public class Nivel_facil extends AppCompatActivity implements View.OnDragListene
     public void onClick(View v) {
         switch (v.getId()){
             case R.id.txt_clikeable:
-                retardador();
-                libroaleatorio();
+                asignacion();
+                contador();
                 break;
+
         }
 
     }
@@ -663,7 +737,8 @@ public class Nivel_facil extends AppCompatActivity implements View.OnDragListene
     @Override
     public void onBackPressed(){
         seleccion=1;
-        countDownTimer.cancel();
+            countDownTimer.cancel();
+
         finish();
 
     }
