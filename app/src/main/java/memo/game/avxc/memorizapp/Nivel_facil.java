@@ -546,10 +546,6 @@ public class Nivel_facil extends AppCompatActivity implements View.OnDragListene
     @Override
     public void onClick(View v) {
         switch (v.getId()){
-            case R.id.txt_clikeable:
-                asignacion();
-                contador();
-                break;
 
         }
 

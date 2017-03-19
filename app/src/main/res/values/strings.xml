@@ -22,9 +22,9 @@
     <string name="Mantiene_punt_max">Tu record es:</string>
     <string name="Puntos">Puntos</string>
 
-    <string name="facil">facil</string>
+    <string name="facil">fácil</string>
     <string name="medio">medio</string>
-    <string name="dificil">dificil</string>
+    <string name="dificil">difícil</string>
 
     <string name="jugar_facil">jugar fácil</string>
     <string name="jugarm_medio">jugar medio</string>

@@ -525,15 +525,6 @@ public class Nivel_medio extends AppCompatActivity implements View.OnDragListene
     public void onClick(View v) {
 
 
-       /* switch (v.getId()){
-            case R.id.txt_clikeable:
-                retardador();
-                libroaleatorio();
-                break;
-
-
-        }*/
-
     }
 
     @Override

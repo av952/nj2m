@@ -638,17 +638,6 @@ public class Nivel_dificil extends AppCompatActivity implements View.OnDragListe
 
     @Override
     public void onClick(View v) {
-
-
-       /* switch (v.getId()){
-            case R.id.txt_clikeable:
-                retardador();
-                libroaleatorio();
-                break;
-
-
-        }*/
-
     }
 
     @Override
